@@ -3,6 +3,17 @@ import HeaderLogo from "../../../assets/images/header-logo.png";
 import { IoLogIn } from "react-icons/io5";
 
 const Header = () => {
+  const routerMenu = [
+    {
+      menuItem: "Home",
+      path: "/",
+    },
+    {
+      menuItem: "Contact Us",
+      path: "/contactus",
+    },
+  ];
+
   return (
     <div className="py-4 bg-white">
       <div className="container mx-auto">
@@ -14,16 +25,16 @@ const Header = () => {
           </div>
           <div className="navbar-center max-sm:hidden">
             <ul className="menu menu-horizontal p-0 font-medium">
-              <li>
-                <Link className="text-black font-semibold" to={"/"}>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link className="text-black font-semibold" to={"/contactus"}>
-                  Contact Us
-                </Link>
-              </li>
+              {routerMenu.map((event) => (
+                <>
+                  {" "}
+                  <li>
+                    <Link className="text-black font-semibold" to={event.path}>
+                      {event.menuItem}
+                    </Link>
+                  </li>
+                </>
+              ))}
             </ul>
           </div>
           <div className="navbar-end items-center gap-4">
