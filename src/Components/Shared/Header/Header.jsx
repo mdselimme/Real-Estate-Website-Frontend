@@ -74,13 +74,13 @@ const Header = () => {
             </div>
             <Link
               to={"/login"}
-              className="text-[#161e2d] btn btn-outline px-8 font-bold border-2 rounded-full border-[#1563df]"
+              className="text-[#161e2d] btn btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]"
             >
               Log In <IoLogIn />
             </Link>
             <Link
               to={"/register"}
-              className="text-[#161e2d] btn btn-outline px-8 font-bold border-2 rounded-full border-[#1563df]"
+              className="text-white hover:text-[#161e2d] hover:bg-white btn btn-outline px-8 font-bold border-2 rounded-full bg-[#1563df] border-[#1563df]"
             >
               Register <FaSignInAlt />
             </Link>
