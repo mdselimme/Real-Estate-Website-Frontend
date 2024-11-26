@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import HeaderLogo from "../../../assets/images/header-logo.png";
 import { IoLogIn } from "react-icons/io5";
+import { FaSignInAlt } from "react-icons/fa";
 
 const Header = () => {
   const routerMenu = [
@@ -56,25 +57,32 @@ const Header = () => {
                 aria-orientation="vertical"
                 aria-labelledby="dropdown-default"
               >
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Link 1
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Link 2
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Link 3
-                  </a>
-                </li>
+                {routerMenu.map((event) => (
+                  <>
+                    {" "}
+                    <li>
+                      <Link
+                        className="text-black dropdown-item font-semibold"
+                        to={event.path}
+                      >
+                        {event.menuItem}
+                      </Link>
+                    </li>
+                  </>
+                ))}
               </ul>
             </div>
-            <Link className="text-[#161e2d] btn btn-outline px-8 font-bold border-2 rounded-full border-[#1563df]">
+            <Link
+              to={"/login"}
+              className="text-[#161e2d] btn btn-outline px-8 font-bold border-2 rounded-full border-[#1563df]"
+            >
               Log In <IoLogIn />
+            </Link>
+            <Link
+              to={"/register"}
+              className="text-[#161e2d] btn btn-outline px-8 font-bold border-2 rounded-full border-[#1563df]"
+            >
+              Register <FaSignInAlt />
             </Link>
           </div>
         </nav>
