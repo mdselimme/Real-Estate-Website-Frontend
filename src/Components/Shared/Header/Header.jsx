@@ -6,10 +6,12 @@ import { FaSignInAlt } from "react-icons/fa";
 const Header = () => {
   const routerMenu = [
     {
+      id: 101,
       menuItem: "Home",
       path: "/",
     },
     {
+      id: 102,
       menuItem: "Contact Us",
       path: "/contactus",
     },
@@ -29,7 +31,7 @@ const Header = () => {
               {routerMenu.map((event) => (
                 <>
                   {" "}
-                  <li>
+                  <li key={event.id}>
                     <Link className="text-black font-semibold" to={event.path}>
                       {event.menuItem}
                     </Link>
@@ -60,8 +62,9 @@ const Header = () => {
                 {routerMenu.map((event) => (
                   <>
                     {" "}
-                    <li>
+                    <li key={event.id}>
                       <Link
+                        key={event.menuItem}
                         className="text-black dropdown-item font-semibold"
                         to={event.path}
                       >

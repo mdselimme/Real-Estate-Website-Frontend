@@ -1,81 +1,58 @@
+import BannerSlider_1 from "../../../../assets/images/banner-slide-1.jpg";
+import BannerSlider_2 from "../../../../assets/images/banner-slide-2.jpg";
+import BannerSlider_3 from "../../../../assets/images/banner-slide-3.jpg";
+import BannerSlider_4 from "../../../../assets/images/banner-slider-4.jpeg";
+
 const BannerSlider = () => {
   return (
-    <div>
-      <div
-        id="carousel-5"
-        data-carousel='{ "loadingClasses": "opacity-0" }'
-        className="relative w-full"
-      >
-        <div className="carousel h-96">
-          <div className="carousel-body h-3/4 opacity-0">
-            {/* <!-- Slide 1 --> */}
-            <div className="carousel-slide">
-              <div className="flex size-full justify-center">
-                <img
-                  src="https://cdn.flyonui.com/fy-assets/components/carousel/image-21.png"
-                  className="size-full object-cover"
-                  alt="mountain"
-                />
-              </div>
-            </div>
-            {/* <!-- Slide 2 --> */}
-            <div className="carousel-slide">
-              <div className="flex size-full justify-center">
-                <img
-                  src="https://cdn.flyonui.com/fy-assets/components/carousel/image-14.png"
-                  className="size-full object-cover"
-                  alt="sand"
-                />
-              </div>
-            </div>
-            {/* <!-- Slide 3 --> */}
-            <div className="carousel-slide">
-              <div className="flex size-full justify-center">
-                <img
-                  src="https://cdn.flyonui.com/fy-assets/components/carousel/image-7.png"
-                  className="size-full object-cover"
-                  alt="cloud"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="carousel-pagination bg-base-100 bottom-0 z-[1] h-1/4 justify-between gap-2 space-x-0 pt-2 overflow-y-auto">
-            <img
-              src="https://cdn.flyonui.com/fy-assets/components/carousel/image-21.png"
-              className="carousel-active:opacity-100 grow object-cover opacity-30"
-              alt="mountain"
-            />
-            <img
-              src="https://cdn.flyonui.com/fy-assets/components/carousel/image-14.png"
-              className="carousel-active:opacity-100 grow object-cover opacity-30"
-              alt="sand"
-            />
-            <img
-              src="https://cdn.flyonui.com/fy-assets/components/carousel/image-7.png"
-              className="carousel-active:opacity-100 grow object-cover opacity-30"
-              alt="cloud"
-            />
+    <div className="fixed">
+      <div className="carousel h-[80vh] w-full">
+        <div id="slide1" className="carousel-item relative w-full">
+          <img src={BannerSlider_1} className="w-full" />
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide4" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide2" className="btn btn-circle">
+              ❯
+            </a>
           </div>
         </div>
-        {/* Previous Slide */}
-        <button type="button" className="carousel-prev">
-          <span className="mb-15" aria-hidden="true">
-            <span className="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow">
-              <span className="icon-[tabler--chevron-left] size-5 cursor-pointer rtl:rotate-180"></span>
-            </span>
-          </span>
-          <span className="sr-only">Previous</span>
-        </button>
-        {/* Next Slide */}
-        <button type="button" className="carousel-next">
-          <span className="sr-only">Next</span>
-          <span className="mb-15" aria-hidden="true">
-            <span className="size-9.5 bg-base-100 flex items-center justify-center rounded-full shadow">
-              <span className="icon-[tabler--chevron-right] size-5 cursor-pointer rtl:rotate-180"></span>
-            </span>
-          </span>
-        </button>
+        <div id="slide2" className="carousel-item relative w-full">
+          <img src={BannerSlider_2} className="w-full" />
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide1" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide3" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
+        <div id="slide3" className="carousel-item relative w-full">
+          <img src={BannerSlider_3} className="w-full" />
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide2" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide4" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
+        <div id="slide4" className="carousel-item relative w-full">
+          <img src={BannerSlider_4} className="w-full" />
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+            <a href="#slide3" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide1" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
       </div>
+      
     </div>
   );
 };
