@@ -3,6 +3,7 @@ import BannerSlider_1 from "../../../../assets/images/banner-slide-1.jpg";
 import BannerSlider_2 from "../../../../assets/images/banner-slide-2.jpg";
 import BannerSlider_3 from "../../../../assets/images/banner-slide-3.jpg";
 import BannerSlider_4 from "../../../../assets/images/banner-slider-4.jpeg";
+import { Link } from "react-router";
 
 const BannerSlider = () => {
   return (
@@ -87,6 +88,20 @@ const BannerSlider = () => {
             We are a real estate agency that will help you find the best
             residence you dream of, <br /> let’s discuss for your dream house?
           </p>
+          <div className="mt-8">
+            <Link
+              to={"/login"}
+              className="text-white btn btn-outline text-lg mr-10 px-10 font-semibold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-white"
+            >
+              For Rent
+            </Link>
+            <Link
+              to={"/register"}
+              className="text-white text-lg hover:text-[#161e2d] hover:bg-white btn btn-outline px-10 font-semibold border-2 rounded-full bg-[#1563df] border-[#1563df]"
+            >
+              For Sale
+            </Link>
+          </div>
         </div>
       </div>
     </div>
