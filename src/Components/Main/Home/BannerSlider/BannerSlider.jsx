@@ -6,13 +6,29 @@ import BannerSlider_4 from "../../../../assets/images/banner-slider-4.jpeg";
 import { Link } from "react-router";
 
 const BannerSlider = () => {
+  /* const bannerAllImage = [
+    {
+      imageKey: 111,
+      imageLink: BannerSlider_1,
+    },
+    {
+      imageKey: 111,
+      imageLink: BannerSlider_2,
+    },
+    {
+      imageKey: 111,
+      imageLink: BannerSlider_3,
+    },
+    {
+      imageKey: 111,
+      imageLink: BannerSlider_4,
+    },
+  ]; */
+
   return (
     <div className="relative overflow-hidden">
-      <div className="carousel h-[85vh] w-full relative overflow-hidden">
-        <div
-          id="slide1"
-          className="carousel-item relative w-full overflow-hidden"
-        >
+      <div className="carousel h-[85vh] w-full relative">
+        <div id="slide1" className="carousel-item relative w-full">
           <img src={BannerSlider_1} className="w-full" />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-40">
             <a href="#slide4" className="btn btn-circle bg-white">
@@ -23,10 +39,7 @@ const BannerSlider = () => {
             </a>
           </div>
         </div>
-        <div
-          id="slide2"
-          className="carousel-item relative w-full overflow-hidden"
-        >
+        <div id="slide2" className="carousel-item relative w-full">
           <img src={BannerSlider_2} className="w-full" />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-40">
             <a href="#slide1" className="btn btn-circle bg-white">
@@ -37,10 +50,7 @@ const BannerSlider = () => {
             </a>
           </div>
         </div>
-        <div
-          id="slide3"
-          className="carousel-item relative w-full overflow-hidden"
-        >
+        <div id="slide3" className="carousel-item relative w-full">
           <img src={BannerSlider_3} className="w-full" />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-40">
             <a href="#slide2" className="btn btn-circle bg-white">
@@ -51,10 +61,7 @@ const BannerSlider = () => {
             </a>
           </div>
         </div>
-        <div
-          id="slide4"
-          className="carousel-item relative w-full overflow-hidden"
-        >
+        <div id="slide4" className="carousel-item relative w-full">
           <img src={BannerSlider_4} className="w-full" />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-40">
             <a href="#slide3" className="btn btn-circle bg-white">
