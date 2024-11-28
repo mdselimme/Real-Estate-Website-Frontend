@@ -12,6 +12,11 @@ const Header = () => {
     },
     {
       id: 102,
+      menuItem: "About Us",
+      path: "/aboutus",
+    },
+    {
+      id: 103,
       menuItem: "Contact Us",
       path: "/contactus",
     },
