@@ -3,7 +3,10 @@ import { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import app from "../../FirebaseAuth/FirebaseAuth";
 
@@ -11,11 +14,11 @@ import app from "../../FirebaseAuth/FirebaseAuth";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const [userData, setUserData] = useState(0);
+  const [userData, setUserData] = useState(null);
   const [residentSingleData, setResidentSingleData] = useState([]);
 
   const auth = getAuth(app);
-
+  const googleProvider = new GoogleAuthProvider();
   // Resident Data Fetch
   useEffect(() => {
     fetch("/resident_data.json")
@@ -27,11 +30,31 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  const logInWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        result.user;
+      })
+      .catch((error) => {
+        console.log(error.message, error.code);
+      });
+  };
+
+  const signOutUser = () => {
+    signOut(auth)
+      .then(() => {})
+      .catch((error) => {
+        console.log(error.message, error.code);
+      });
+  };
+
   useEffect(() => {
     const unSubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserData(user);
         console.log(user);
+      } else {
+        setUserData(null);
       }
       return () => unSubscribed();
     });
@@ -42,6 +65,8 @@ const AuthProvider = ({ children }) => {
     residentSingleData,
     registerWithEmailAndPass,
     auth,
+    signOutUser,
+    logInWithGoogle,
   };
 
   return (

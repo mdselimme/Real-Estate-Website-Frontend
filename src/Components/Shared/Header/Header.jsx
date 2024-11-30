@@ -1,9 +1,17 @@
 import { Link } from "react-router";
 import HeaderLogo from "../../../assets/images/header-logo.png";
 import { IoLogIn } from "react-icons/io5";
-import { FaSignInAlt } from "react-icons/fa";
+import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { userData, signOutUser } = useContext(AuthContext);
+
+  const logOutUser = () => {
+    signOutUser();
+  };
+
   const routerMenu = [
     {
       id: 101,
@@ -17,6 +25,11 @@ const Header = () => {
     },
     {
       id: 103,
+      menuItem: "Update Profile",
+      path: "/updateprofile",
+    },
+    {
+      id: 104,
       menuItem: "Contact Us",
       path: "/contactus",
     },
@@ -70,18 +83,39 @@ const Header = () => {
                 ))}
               </ul>
             </div>
-            <Link
-              to={"/login"}
-              className="text-[#161e2d] btn btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]"
-            >
-              Log In <IoLogIn />
-            </Link>
-            <Link
-              to={"/register"}
-              className="text-white hover:text-[#161e2d] hover:bg-white btn btn-outline px-8 font-bold border-2 rounded-full bg-[#1563df] border-[#1563df]"
-            >
-              Register <FaSignInAlt />
-            </Link>
+            {userData ? (
+              <>
+                <div className="tooltip" data-tip={userData?.displayName}>
+                  <img
+                    src={userData?.photoURL}
+                    className="w-12 h-12 rounded-full"
+                    alt="find-image"
+                  />
+                </div>
+
+                <Link
+                  onClick={logOutUser}
+                  className="text-white hover:text-[#161e2d] hover:bg-white btn btn-outline px-8 font-bold border-2 rounded-full bg-[#1563df] border-[#1563df]"
+                >
+                  Log Out <FaSignOutAlt />
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  to={"/login"}
+                  className="text-[#161e2d] btn btn-outline px-6 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]"
+                >
+                  Log In <IoLogIn />
+                </Link>
+                <Link
+                  to={"/register"}
+                  className="text-white hover:text-[#161e2d] hover:bg-white btn btn-outline px-8 font-bold border-2 rounded-full bg-[#1563df] border-[#1563df]"
+                >
+                  Register <FaSignInAlt />
+                </Link>
+              </>
+            )}
           </div>
         </nav>
       </div>

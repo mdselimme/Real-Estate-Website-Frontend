@@ -6,7 +6,8 @@ import { AuthContext } from "../../../Shared/AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { registerWithEmailAndPass, auth } = useContext(AuthContext);
+  const { registerWithEmailAndPass, auth, logInWithGoogle } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -37,6 +38,10 @@ const Register = () => {
     console.log(
       `username: ${username}, image: ${imagelink}, email: ${email}, password: ${password}`
     );
+  };
+
+  const handleGoogleLogIn = () => {
+    logInWithGoogle();
   };
 
   return (
@@ -153,7 +158,10 @@ const Register = () => {
           <div className="divider">Or</div>
           <div className="text-center">
             <div className="flex justify-between items-center mb-5">
-              <button className="text-[#161e2d] btn w-[47%] btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-black">
+              <button
+                onClick={handleGoogleLogIn}
+                className="text-[#161e2d] btn w-[47%] btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-black"
+              >
                 <FaGoogle className="text-lg" />
                 Sign In With Google
               </button>
