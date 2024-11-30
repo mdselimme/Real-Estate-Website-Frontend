@@ -6,8 +6,13 @@ import { AuthContext } from "../../../Shared/AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { registerWithEmailAndPass, auth, logInWithGoogle } =
-    useContext(AuthContext);
+  const {
+    registerWithEmailAndPass,
+    auth,
+    logInWithGithub,
+    logInWithTwitterOrX,
+    logInWithGoogle,
+  } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -25,8 +30,8 @@ const Register = () => {
           photoURL: imagelink,
         })
           .then(() => {
-            navigate("/");
             console.log("Profile Updated");
+            navigate("/");
           })
           .catch((error) => {
             console.log(error.code, error.message);
@@ -40,8 +45,14 @@ const Register = () => {
     );
   };
 
-  const handleGoogleLogIn = () => {
-    logInWithGoogle();
+  const handleLogInWithGoogle = () => {
+    logInWithGoogle(navigate);
+  };
+  const handleLogInWithGithub = () => {
+    logInWithGithub(navigate);
+  };
+  const handleLogInWithTwitter = () => {
+    logInWithTwitterOrX(navigate);
   };
 
   return (
@@ -159,17 +170,23 @@ const Register = () => {
           <div className="text-center">
             <div className="flex justify-between items-center mb-5">
               <button
-                onClick={handleGoogleLogIn}
+                onClick={handleLogInWithGoogle}
                 className="text-[#161e2d] btn w-[47%] btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-black"
               >
                 <FaGoogle className="text-lg" />
                 Sign In With Google
               </button>
-              <button className="text-[#161e2d] btn w-[47%] btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-black">
+              <button
+                onClick={handleLogInWithGithub}
+                className="text-[#161e2d] btn w-[47%] btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-black"
+              >
                 <FaGithubSquare className="text-lg" /> Sign In With Github
               </button>
             </div>
-            <button className="text-[#161e2d] w-full btn btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-black">
+            <button
+              onClick={handleLogInWithTwitter}
+              className="text-[#161e2d] w-full btn btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-black"
+            >
               <FaXTwitter className="text-lg" /> Sign In With X
             </button>
           </div>

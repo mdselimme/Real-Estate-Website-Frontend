@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import HeaderLogo from "../../../assets/images/header-logo.png";
 import { IoLogIn } from "react-icons/io5";
 import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
@@ -7,9 +7,10 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Header = () => {
   const { userData, signOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const logOutUser = () => {
-    signOutUser();
+    signOutUser(navigate);
   };
 
   const routerMenu = [

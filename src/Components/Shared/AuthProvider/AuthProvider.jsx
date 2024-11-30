@@ -3,10 +3,13 @@ import { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  TwitterAuthProvider,
 } from "firebase/auth";
 import app from "../../FirebaseAuth/FirebaseAuth";
 
@@ -19,6 +22,8 @@ const AuthProvider = ({ children }) => {
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const twitterProvider = new TwitterAuthProvider();
   // Resident Data Fetch
   useEffect(() => {
     fetch("/resident_data.json")
@@ -30,19 +35,48 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const logInWithGoogle = () => {
+  const logInWithEmailAndPass = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const logInWithGoogle = (navigate) => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         result.user;
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message, error.code);
       });
   };
 
-  const signOutUser = () => {
+  const logInWithGithub = (navigate) => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        result.user;
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message, error.code);
+      });
+  };
+
+  const logInWithTwitterOrX = (navigate) => {
+    signInWithPopup(auth, twitterProvider)
+      .then((result) => {
+        result.user;
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message, error.code);
+      });
+  };
+
+  const signOutUser = (navigate) => {
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        navigate("/login");
+      })
       .catch((error) => {
         console.log(error.message, error.code);
       });
@@ -67,6 +101,9 @@ const AuthProvider = ({ children }) => {
     auth,
     signOutUser,
     logInWithGoogle,
+    logInWithGithub,
+    logInWithTwitterOrX,
+    logInWithEmailAndPass,
   };
 
   return (
