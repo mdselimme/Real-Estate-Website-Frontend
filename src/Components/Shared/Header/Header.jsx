@@ -23,7 +23,7 @@ const Header = () => {
   ];
 
   return (
-    <div className="py-4 bg-white">
+    <div className="py-4 bg-white shadow">
       <div className="container mx-auto">
         <nav className="navbar flex w-full items-center justify-between gap-2">
           <div className="navbar-start max-sm:w-1/4">
