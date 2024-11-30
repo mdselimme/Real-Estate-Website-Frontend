@@ -43,6 +43,7 @@ const Register = () => {
     console.log(
       `username: ${username}, image: ${imagelink}, email: ${email}, password: ${password}`
     );
+    e.target.reset();
   };
 
   const handleLogInWithGoogle = () => {

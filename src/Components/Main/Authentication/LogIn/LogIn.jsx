@@ -27,6 +27,7 @@ const LogIn = () => {
         console.log(error.code, error.message);
       });
     console.log(`email: ${email}, password: ${password}`);
+    e.target.reset();
   };
 
   const handleLogInWithGoogle = () => {

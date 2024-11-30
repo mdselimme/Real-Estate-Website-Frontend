@@ -19,6 +19,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [residentSingleData, setResidentSingleData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
@@ -32,14 +33,17 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const registerWithEmailAndPass = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const logInWithEmailAndPass = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const logInWithGoogle = (navigate) => {
+    setLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         result.user;
@@ -51,6 +55,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logInWithGithub = (navigate) => {
+    setLoading(true);
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         result.user;
@@ -62,6 +67,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logInWithTwitterOrX = (navigate) => {
+    setLoading(true);
     signInWithPopup(auth, twitterProvider)
       .then((result) => {
         result.user;
@@ -73,6 +79,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const signOutUser = (navigate) => {
+    setLoading(true);
     signOut(auth)
       .then(() => {
         navigate("/login");
@@ -86,6 +93,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserData(user);
+        setLoading(false);
         console.log(user);
       } else {
         setUserData(null);
@@ -104,6 +112,7 @@ const AuthProvider = ({ children }) => {
     logInWithGithub,
     logInWithTwitterOrX,
     logInWithEmailAndPass,
+    loading,
   };
 
   return (
