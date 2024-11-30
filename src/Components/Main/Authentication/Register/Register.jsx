@@ -1,11 +1,42 @@
+import { useContext } from "react";
 import { FaGithubSquare, FaGoogle, FaSignInAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../../../Shared/AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const { registerWithEmailAndPass, auth } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
   const handleRegisterAccount = (e) => {
     e.preventDefault();
-    console.log(e.target.email.value);
+    const username = e.target.username.value;
+    const imagelink = e.target.imagelink.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    registerWithEmailAndPass(email, password)
+      .then((result) => {
+        result.user;
+        updateProfile(auth.currentUser, {
+          displayName: username,
+          photoURL: imagelink,
+        })
+          .then(() => {
+            navigate("/");
+            console.log("Profile Updated");
+          })
+          .catch((error) => {
+            console.log(error.code, error.message);
+          });
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+      });
+    console.log(
+      `username: ${username}, image: ${imagelink}, email: ${email}, password: ${password}`
+    );
   };
 
   return (
@@ -131,7 +162,7 @@ const Register = () => {
               </button>
             </div>
             <button className="text-[#161e2d] w-full btn btn-outline px-8 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-black">
-              <FaXTwitter className="text-lg" /> Sign In With Twitter
+              <FaXTwitter className="text-lg" /> Sign In With X
             </button>
           </div>
         </div>
