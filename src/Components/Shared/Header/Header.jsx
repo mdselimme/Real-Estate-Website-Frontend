@@ -34,14 +34,11 @@ const Header = () => {
           <div className="navbar-center max-sm:hidden">
             <ul className="menu menu-horizontal p-0 font-medium">
               {routerMenu.map((event) => (
-                <>
-                  {" "}
-                  <li key={event.id}>
-                    <Link className="text-black font-semibold" to={event.path}>
-                      {event.menuItem}
-                    </Link>
-                  </li>
-                </>
+                <li key={event.id}>
+                  <Link className="text-black font-semibold" to={event.path}>
+                    {event.menuItem}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -65,18 +62,11 @@ const Header = () => {
                 aria-labelledby="dropdown-default"
               >
                 {routerMenu.map((event) => (
-                  <>
-                    {" "}
-                    <li key={event.id}>
-                      <Link
-                        key={event.menuItem}
-                        className="text-black dropdown-item font-semibold"
-                        to={event.path}
-                      >
-                        {event.menuItem}
-                      </Link>
-                    </li>
-                  </>
+                  <li key={event.id}>
+                    <Link className="text-black font-semibold" to={event.path}>
+                      {event.menuItem}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
