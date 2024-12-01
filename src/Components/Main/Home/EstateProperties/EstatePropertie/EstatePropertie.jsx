@@ -75,7 +75,7 @@ const EstatePropertie = ({ resident }) => {
 };
 
 EstatePropertie.propTypes = {
-  resident: PropTypes.node,
+  resident: PropTypes.object.isRequired,
 };
 
 export default EstatePropertie;

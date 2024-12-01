@@ -35,7 +35,11 @@ createRoot(document.getElementById("root")).render(
             ></Route>
             <Route
               path="/viewproperty/:id"
-              element={<ViewPropertyDetails></ViewPropertyDetails>}
+              element={
+                <PrivateRoute>
+                  <ViewPropertyDetails></ViewPropertyDetails>
+                </PrivateRoute>
+              }
             ></Route>
           </Route>
         </Routes>
