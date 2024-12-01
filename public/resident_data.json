@@ -1,7 +1,7 @@
 [
   {
     "id": "R12345",
-    "image": "https://example.com/image1.jpg",
+    "image": "https://i.ibb.co.com/1zBYmd1/house-6.jpg",
     "title": "Luxury Apartment in Downtown",
     "segment": "Residential",
     "description": "This luxury apartment features a modern design with high-end finishes, offering 3 spacious bedrooms, a large living room, and a private balcony overlooking the city skyline. The apartment is located in the heart of the city, close to shops, restaurants, and public transport.",
@@ -15,7 +15,7 @@
   },
   {
     "id": "R12346",
-    "image": "https://example.com/image2.jpg",
+    "image": "https://i.ibb.co.com/NmRCX50/house-5.jpg",
     "title": "Cozy Studio in the Suburbs",
     "segment": "Residential",
     "description": "This affordable studio apartment offers a perfect living space for singles or couples. It includes a fully equipped kitchen, a cozy living area, and is located in a peaceful neighborhood with parks and local amenities nearby.",
@@ -29,7 +29,7 @@
   },
   {
     "id": "R12347",
-    "image": "https://example.com/image3.jpg",
+    "image": "https://i.ibb.co.com/p1KGKQy/house-2.jpg",
     "title": "Beachfront Villa with Private Pool",
     "segment": "Residential",
     "description": "Stunning beachfront villa featuring 4 bedrooms, 4 bathrooms, and a private pool. This property provides breathtaking ocean views and easy beach access, ideal for those who love luxury living by the sea.",
@@ -50,7 +50,7 @@
   },
   {
     "id": "R12348",
-    "image": "https://example.com/image4.jpg",
+    "image": "https://i.ibb.co.com/y4vPtBW/house-4.jpg",
     "title": "Spacious Family Home in Suburbia",
     "segment": "Residential",
     "description": "A charming family home with 5 bedrooms, 3 bathrooms, and a large backyard. The house includes a modern kitchen, a cozy living room, and is located in a family-friendly neighborhood with excellent schools and parks.",
@@ -70,7 +70,7 @@
   },
   {
     "id": "R12349",
-    "image": "https://example.com/image5.jpg",
+    "image": "https://i.ibb.co.com/3SsFcpL/house-1.jpg",
     "title": "Modern Penthouse with City Views",
     "segment": "Residential",
     "description": "A luxury penthouse offering expansive views of the city skyline. With 3 bedrooms, 3 bathrooms, and an open-plan living area, this property is designed for high-end living. Located in a prime location with close proximity to entertainment and business districts.",
@@ -84,7 +84,7 @@
   },
   {
     "id": "R12350",
-    "image": "https://example.com/image6.jpg",
+    "image": "https://i.ibb.co.com/zmhYrxs/house-3.jpg",
     "title": "Contemporary Loft in the Industrial District",
     "segment": "Residential",
     "description": "A unique loft space located in an old warehouse, featuring open-plan living, exposed brick walls, and large windows. This industrial-style home is perfect for city lovers seeking something different with plenty of character.",

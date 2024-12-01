@@ -4,7 +4,7 @@ import RightArrow2 from "../../../../assets/images/arrow-right-2.png";
 
 const HowWorks = () => {
   return (
-    <div className="py-14">
+    <div className="pt-14 pb-5">
       <div className="container mx-auto">
         <div className="text-center py-10">
           <h1 className="text-5xl font-bold mb-5">How It Works</h1>
