@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { Navigate } from "react-router";
+import { Navigate, useLocation } from "react-router";
 import PropTypes from "prop-types";
 
 const PrivateRoute = ({ children }) => {
   const { userData, loading } = useContext(AuthContext);
 
+  const location = useLocation();
   if (loading) {
     return (
       <div className="flex justify-center items-center">
@@ -13,11 +14,11 @@ const PrivateRoute = ({ children }) => {
       </div>
     );
   }
-
-  if (userData) {
+  if (!userData) {
+    return <Navigate state={location.pathname} to={"/login"}></Navigate>;
+  } else {
     return children;
   }
-  return <Navigate to={"/login"} replace></Navigate>;
 };
 
 PrivateRoute.propTypes = {

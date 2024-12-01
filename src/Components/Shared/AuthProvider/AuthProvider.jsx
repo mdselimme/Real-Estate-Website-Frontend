@@ -97,6 +97,7 @@ const AuthProvider = ({ children }) => {
         console.log(user);
       } else {
         setUserData(null);
+        setLoading(false);
       }
       return () => unSubscribed();
     });

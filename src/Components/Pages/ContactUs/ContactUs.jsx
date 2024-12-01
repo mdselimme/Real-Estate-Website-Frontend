@@ -11,10 +11,10 @@ const ContactUs = () => {
   return (
     <div>
       <div className="container mx-auto py-10">
-        <h1 className="text-center my-5 font-extrabold text-2xl">
+        <h1 className="text-center my-10 font-extrabold text-2xl">
           Contact With Us
         </h1>
-        <div className="w-2/5 mx-auto">
+        <div className="w-2/5 mb-10 mx-auto">
           <form onSubmit={handleRegisterAccount}>
             <div className="mb-5">
               <label className="input input-bordered rounded-full flex items-center gap-2">

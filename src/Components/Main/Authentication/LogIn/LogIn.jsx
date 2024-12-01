@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Shared/AuthProvider/AuthProvider";
 import { FaGithubSquare, FaGoogle, FaSignInAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const LogIn = () => {
   const {
@@ -13,6 +13,7 @@ const LogIn = () => {
   } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogInAccount = (e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ const LogIn = () => {
     logInWithEmailAndPass(email, password)
       .then((result) => {
         result.user;
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.code, error.message);
