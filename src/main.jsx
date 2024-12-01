@@ -11,6 +11,7 @@ import AboutUs from "./Components/Pages/AboutUs/AboutUs.jsx";
 import AuthProvider from "./Components/Shared/AuthProvider/AuthProvider.jsx";
 import UpdateProfile from "./Components/Pages/UpdateProfile/UpdateProfile.jsx";
 import PrivateRoute from "./Components/Shared/PrivateRoute/PrivateRoute.jsx";
+import ViewPropertyDetails from "./Components/Pages/ViewPropertyDetails/ViewPropertyDetails.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -31,6 +32,10 @@ createRoot(document.getElementById("root")).render(
                   <UpdateProfile></UpdateProfile>
                 </PrivateRoute>
               }
+            ></Route>
+            <Route
+              path="/viewproperty/:id"
+              element={<ViewPropertyDetails></ViewPropertyDetails>}
             ></Route>
           </Route>
         </Routes>
