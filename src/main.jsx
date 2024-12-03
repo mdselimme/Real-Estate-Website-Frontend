@@ -12,6 +12,7 @@ import AuthProvider from "./Components/Shared/AuthProvider/AuthProvider.jsx";
 import UpdateProfile from "./Components/Pages/UpdateProfile/UpdateProfile.jsx";
 import PrivateRoute from "./Components/Shared/PrivateRoute/PrivateRoute.jsx";
 import ViewPropertyDetails from "./Components/Pages/ViewPropertyDetails/ViewPropertyDetails.jsx";
+import NotFound from "./Components/Pages/NotFound/NotFound.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -42,6 +43,7 @@ createRoot(document.getElementById("root")).render(
               }
             ></Route>
           </Route>
+          <Route path="*" element={<NotFound></NotFound>}></Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
