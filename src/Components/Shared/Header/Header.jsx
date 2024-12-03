@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import HeaderLogo from "../../../assets/images/header-logo.png";
 import { IoLogIn } from "react-icons/io5";
-import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+import { FaShoppingBag, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
@@ -83,6 +83,9 @@ const Header = () => {
                   </li>
                 ))}
               </ul>
+            </div>
+            <div>
+              <FaShoppingBag className="text-3xl" />
             </div>
             {userData ? (
               <>
