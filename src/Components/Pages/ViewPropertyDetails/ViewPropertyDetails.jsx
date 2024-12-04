@@ -40,8 +40,8 @@ const ViewPropertyDetails = () => {
         </div>
         <div className="bg-[#F3F7FD] p-10 rounded-2xl">
           <div className="bg-white rounded-2xl p-10">
-            <p className="text-[#1563df] text-base inline-block hover:text-[#161e2d] py-2 px-6 font-bold rounded-full bg-[#FEECE5] mb-3">
-              {data?.status}
+            <p className="text-[#1563df] text-base inline-block hover:text-[#161e2d] py-2 px-6 font-bold rounded-full bg-[#FEECE5] mb-4">
+              {data?.segment}
             </p>
             <h1 className="text-2xl font-extrabold">{data?.title}</h1>
             <p className="flex items-center text-[#161e2d] mt-5 font-normal">
@@ -74,23 +74,27 @@ const ViewPropertyDetails = () => {
 
           <div className="bg-white mt-10 p-10 rounded-2xl">
             <h1 className="text-xl font-extrabold">Details and Features</h1>
-            <table className="mt-5">
+            <table className="mt-3">
               <tbody>
                 <tr>
-                  <td><b>Price:</b></td>
-                  <td>{data?.price} $</td>
+                  <td className="p-4"><b>Price:</b></td>
+                  <td className="p-4">{data?.price} $</td>
                 </tr>
                 <tr>
-                  <td><b>Status:</b></td>
-                  <td>{data?.status}</td>
+                  <td className="p-4"><b>Status:</b></td>
+                  <td className="p-4">{data?.status}</td>
                 </tr>
                 <tr>
-                  <td><b>Rooms:</b></td>
-                  <td>{data?.rooms}</td>
+                  <td className="p-4"><b>Rooms:</b></td>
+                  <td className="p-4">{data?.rooms}</td>
                 </tr>
                 <tr>
-                  <td><b>Bath:</b></td>
-                  <td>{data?.bath}</td>
+                  <td className="p-4"><b>Bath:</b></td>
+                  <td className="p-4">{data?.bath}</td>
+                </tr>
+                <tr>
+                  <td className="p-4"><b>Area:</b></td>
+                  <td className="p-4">{data?.area}</td>
                 </tr>
 
               </tbody>
