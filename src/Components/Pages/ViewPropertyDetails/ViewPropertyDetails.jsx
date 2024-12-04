@@ -73,7 +73,28 @@ const ViewPropertyDetails = () => {
           </div>
 
           <div className="bg-white mt-10 p-10 rounded-2xl">
+            <h1 className="text-xl font-extrabold">Details and Features</h1>
+            <table className="mt-5">
+              <tbody>
+                <tr>
+                  <td><b>Price:</b></td>
+                  <td>{data?.price} $</td>
+                </tr>
+                <tr>
+                  <td><b>Status:</b></td>
+                  <td>{data?.status}</td>
+                </tr>
+                <tr>
+                  <td><b>Rooms:</b></td>
+                  <td>{data?.rooms}</td>
+                </tr>
+                <tr>
+                  <td><b>Bath:</b></td>
+                  <td>{data?.bath}</td>
+                </tr>
 
+              </tbody>
+            </table>
           </div>
 
           <div className="tooltip w-full tooltip-black" data-tip="Click for show Details">
