@@ -4,6 +4,7 @@ import { AuthContext } from "../../Shared/AuthProvider/AuthProvider";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaBath, FaSquare } from "react-icons/fa";
 import { LuBedSingle } from "react-icons/lu";
+import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from "react-accessible-accordion";
 
 const ViewPropertyDetails = () => {
   const { residentSingleData } = useContext(AuthContext);
@@ -70,6 +71,30 @@ const ViewPropertyDetails = () => {
               </p>
             </div>
           </div>
+
+          <div className="bg-white mt-10 p-10 rounded-2xl">
+
+          </div>
+
+          <div className="tooltip w-full tooltip-black" data-tip="Click for show Details">
+            <div className="bg-white mt-10 p-10 rounded-2xl text-start">
+              <Accordion allowZeroExpanded>
+
+                <AccordionItem>
+                  <AccordionItemHeading>
+                    <AccordionItemButton className="text-xl font-extrabold">
+                      Description
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel className="text-base mt-5 leading-8 font-medium text-justify text-[rgba(78,92,125)]">
+                    {data?.description}
+                  </AccordionItemPanel>
+                </AccordionItem>
+
+              </Accordion>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

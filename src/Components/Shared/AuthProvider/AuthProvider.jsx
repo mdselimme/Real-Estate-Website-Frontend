@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
   const twitterProvider = new TwitterAuthProvider();
   // Resident Data Fetch
   useEffect(() => {
-    fetch("resident_data.json")
+    fetch("/resident_data.json")
       .then((res) => res.json())
       .then((data) => setResidentSingleData(data));
   }, []);
