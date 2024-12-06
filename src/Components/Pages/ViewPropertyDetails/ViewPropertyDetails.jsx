@@ -4,7 +4,13 @@ import { AuthContext } from "../../Shared/AuthProvider/AuthProvider";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaBath, FaSquare } from "react-icons/fa";
 import { LuBedSingle } from "react-icons/lu";
-import { Accordion, AccordionItem, AccordionItemButton, AccordionItemHeading, AccordionItemPanel } from "react-accessible-accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemButton,
+  AccordionItemHeading,
+  AccordionItemPanel,
+} from "react-accessible-accordion";
 
 const ViewPropertyDetails = () => {
   const { residentSingleData } = useContext(AuthContext);
@@ -77,34 +83,58 @@ const ViewPropertyDetails = () => {
             <table className="mt-3">
               <tbody>
                 <tr>
-                  <td className="p-4"><b>Price:</b></td>
+                  <td className="p-4">
+                    <b>Price:</b>
+                  </td>
                   <td className="p-4">{data?.price} $</td>
                 </tr>
                 <tr>
-                  <td className="p-4"><b>Status:</b></td>
+                  <td className="p-4">
+                    <b>Status:</b>
+                  </td>
                   <td className="p-4">{data?.status}</td>
                 </tr>
                 <tr>
-                  <td className="p-4"><b>Rooms:</b></td>
+                  <td className="p-4">
+                    <b>Rooms:</b>
+                  </td>
                   <td className="p-4">{data?.rooms}</td>
                 </tr>
                 <tr>
-                  <td className="p-4"><b>Bath:</b></td>
+                  <td className="p-4">
+                    <b>Bath:</b>
+                  </td>
                   <td className="p-4">{data?.bath}</td>
                 </tr>
                 <tr>
-                  <td className="p-4"><b>Area:</b></td>
+                  <td className="p-4">
+                    <b>Area:</b>
+                  </td>
                   <td className="p-4">{data?.area}</td>
                 </tr>
-
               </tbody>
             </table>
+            <h1 className="text-lg font-extrabold mt-5">Others Facilities</h1>
+            <div>
+              <ul className="flex justify-start text-white mt-5 gap-5 flex-wrap">
+                {data?.facilities.map((ele, idn) => (
+                  <li
+                    className="text-base bg-[#2567e3d0] px-5 rounded-lg py-2 font-medium"
+                    key={idn}
+                  >
+                    {ele}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          <div className="tooltip w-full tooltip-black" data-tip="Click for show Details">
+          <div
+            className="tooltip w-full tooltip-black"
+            data-tip="Click for show Details"
+          >
             <div className="bg-white mt-10 p-10 rounded-2xl text-start">
               <Accordion allowZeroExpanded>
-
                 <AccordionItem>
                   <AccordionItemHeading>
                     <AccordionItemButton className="text-xl font-extrabold">
@@ -115,11 +145,9 @@ const ViewPropertyDetails = () => {
                     {data?.description}
                   </AccordionItemPanel>
                 </AccordionItem>
-
               </Accordion>
             </div>
           </div>
-
         </div>
       </div>
     </div>
