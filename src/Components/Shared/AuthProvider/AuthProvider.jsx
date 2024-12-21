@@ -42,36 +42,36 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const logInWithGoogle = (navigate) => {
+  const logInWithGoogle = (navigate, location) => {
     setLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         result.user;
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message, error.code);
       });
   };
 
-  const logInWithGithub = (navigate) => {
+  const logInWithGithub = (navigate, location) => {
     setLoading(true);
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         result.user;
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message, error.code);
       });
   };
 
-  const logInWithTwitterOrX = (navigate) => {
+  const logInWithTwitterOrX = (navigate, location) => {
     setLoading(true);
     signInWithPopup(auth, twitterProvider)
       .then((result) => {
         result.user;
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message, error.code);

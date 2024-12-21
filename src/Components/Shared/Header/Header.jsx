@@ -24,11 +24,11 @@ const Header = () => {
       menuItem: "About Us",
       path: "/aboutus",
     },
-    {
-      id: 103,
-      menuItem: "Update Profile",
-      path: "/updateprofile",
-    },
+    // {
+    //   id: 103,
+    //   menuItem: "Update Profile",
+    //   path: "/updateprofile",
+    // },
     {
       id: 104,
       menuItem: "Contact Us",

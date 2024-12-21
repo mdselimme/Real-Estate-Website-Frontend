@@ -32,11 +32,11 @@ const Register = () => {
         })
           .then(() => {
             console.log("Profile Updated");
-            navigate(location?.state ? location.state : "/");
           })
           .catch((error) => {
             console.log(error.code, error.message);
           });
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.code, error.message);
@@ -48,13 +48,16 @@ const Register = () => {
   };
 
   const handleLogInWithGoogle = () => {
-    logInWithGoogle(navigate);
+    logInWithGoogle(navigate, location);
+    navigate(location?.state ? location.state : "/");
   };
   const handleLogInWithGithub = () => {
-    logInWithGithub(navigate);
+    logInWithGithub(navigate, location);
+    navigate(location?.state ? location.state : "/");
   };
   const handleLogInWithTwitter = () => {
-    logInWithTwitterOrX(navigate);
+    logInWithTwitterOrX(navigate, location);
+    navigate(location?.state ? location.state : "/");
   };
 
   return (
