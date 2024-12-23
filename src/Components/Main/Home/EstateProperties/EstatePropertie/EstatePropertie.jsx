@@ -49,7 +49,7 @@ const EstatePropertie = ({ resident }) => {
               </div>
               <div className="flex justify-between items-center pt-5">
                 <Link
-                  to={`/viewproperty/${resident?.id}`}
+                  to={`/viewproperty/${resident?._id}`}
                   className="text-white hover:text-[#161e2d] hover:bg-white btn btn-outline px-8 font-bold border-2 rounded-full bg-[#1563df] border-[#1563df]"
                 >
                   View Property Details

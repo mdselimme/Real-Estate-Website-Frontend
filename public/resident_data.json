@@ -1,6 +1,5 @@
 [
   {
-    "id": "R12345",
     "image": "https://i.ibb.co.com/1zBYmd1/house-6.jpg",
     "title": "Luxury Apartment in Downtown",
     "segment": "Residential",
@@ -14,7 +13,6 @@
     "facilities": ["Living Room", "Swimming Pool", "Kitchen", "Gym", "Parking"]
   },
   {
-    "id": "R12346",
     "image": "https://i.ibb.co.com/NmRCX50/house-5.jpg",
     "title": "Cozy Studio in the Suburbs",
     "segment": "Residential",
@@ -28,7 +26,6 @@
     "facilities": ["Living Room", "Kitchen", "Parking"]
   },
   {
-    "id": "R12347",
     "image": "https://i.ibb.co.com/p1KGKQy/house-2.jpg",
     "title": "Beachfront Villa with Private Pool",
     "segment": "Residential",
@@ -49,7 +46,6 @@
     ]
   },
   {
-    "id": "R12348",
     "image": "https://i.ibb.co.com/y4vPtBW/house-4.jpg",
     "title": "Spacious Family Home in Suburbia",
     "segment": "Residential",
@@ -69,7 +65,6 @@
     ]
   },
   {
-    "id": "R12349",
     "image": "https://i.ibb.co.com/3SsFcpL/house-1.jpg",
     "title": "Modern Penthouse with City Views",
     "segment": "Residential",
@@ -83,7 +78,6 @@
     "facilities": ["Living Room", "Swimming Pool", "Kitchen", "Gym", "Parking"]
   },
   {
-    "id": "R12350",
     "image": "https://i.ibb.co.com/zmhYrxs/house-3.jpg",
     "title": "Contemporary Loft in the Industrial District",
     "segment": "Residential",
@@ -97,7 +91,6 @@
     "facilities": ["Living Room", "Kitchen", "Parking"]
   },
   {
-    "id": "R12351",
     "image": "https://example.com/image7.jpg",
     "title": "Renovated Bungalow with Garden",
     "segment": "Residential",
@@ -111,7 +104,6 @@
     "facilities": ["Living Room", "Garden", "Kitchen", "Parking"]
   },
   {
-    "id": "R12352",
     "image": "https://example.com/image8.jpg",
     "title": "Luxury Condominium in the City Center",
     "segment": "Residential",
@@ -125,7 +117,6 @@
     "facilities": ["Living Room", "Swimming Pool", "Kitchen", "Gym", "Rooftop"]
   },
   {
-    "id": "R12353",
     "image": "https://example.com/image9.jpg",
     "title": "Country Cottage with Scenic Views",
     "segment": "Residential",
@@ -139,7 +130,6 @@
     "facilities": ["Living Room", "Kitchen", "Parking", "Garden"]
   },
   {
-    "id": "R12354",
     "image": "https://example.com/image10.jpg",
     "title": "Stylish Urban Loft for Rent",
     "segment": "Residential",
@@ -153,7 +143,6 @@
     "facilities": ["Living Room", "Kitchen", "Parking"]
   },
   {
-    "id": "R12355",
     "image": "https://example.com/image11.jpg",
     "title": "Elegant Mansion for Rent",
     "segment": "Residential",
@@ -174,7 +163,6 @@
     ]
   },
   {
-    "id": "R12356",
     "image": "https://example.com/image12.jpg",
     "title": "Modern Apartment for Rent in Central Location",
     "segment": "Residential",
@@ -188,7 +176,6 @@
     "facilities": ["Living Room", "Kitchen", "Gym", "Parking"]
   },
   {
-    "id": "R12357",
     "image": "https://example.com/image13.jpg",
     "title": "Spacious Townhouse in Quiet Neighborhood",
     "segment": "Residential",
@@ -202,7 +189,6 @@
     "facilities": ["Living Room", "Kitchen", "Parking", "Garden"]
   },
   {
-    "id": "R12358",
     "image": "https://example.com/image14.jpg",
     "title": "Studio Apartment in Trendy Area for Rent",
     "segment": "Residential",

@@ -19,7 +19,7 @@ const EstateProperties = () => {
         <div className="grid grid-cols-3 justify-between items-start gap-16 mt-8 mb-14">
           {residentSingleData.slice(0, 6).map((residentData) => (
             <EstatePropertie
-              key={residentData.id}
+              key={residentData._id}
               resident={residentData}
             ></EstatePropertie>
           ))}

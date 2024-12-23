@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { AuthContext } from "../../Shared/AuthProvider/AuthProvider";
+
 import { IoLocationOutline } from "react-icons/io5";
 import { FaBath, FaSquare } from "react-icons/fa";
 import { LuBedSingle } from "react-icons/lu";
@@ -13,11 +13,17 @@ import {
 } from "react-accessible-accordion";
 
 const ViewPropertyDetails = () => {
-  const { residentSingleData } = useContext(AuthContext);
+  const [data, setPropertyData] = useState(null);
 
   const { id } = useParams();
 
-  const data = residentSingleData.find((ele) => ele.id === id);
+  console.log(id);
+
+  useEffect(() => {
+    fetch(`http://localhost:2000/homes/${id}`)
+      .then((res) => res.json())
+      .then((data) => setPropertyData(data));
+  }, [id]);
 
   return (
     <div className="container mx-auto py-10 md:px-5">
