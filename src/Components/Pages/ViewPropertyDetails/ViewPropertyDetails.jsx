@@ -32,7 +32,7 @@ const ViewPropertyDetails = () => {
           <img
             className="w-full h-[25rem] rounded-2xl"
             src={data?.image}
-            alt=""
+            alt={data?.title}
           />
         </div>
         <div className="bg-[#F3F7FD] p-10 rounded-2xl">

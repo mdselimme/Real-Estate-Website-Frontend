@@ -1,7 +1,9 @@
+import AboutUsBanner from "./AboutUsBanner/AboutUsBanner";
+
 const AboutUs = () => {
   return (
     <div>
-      <h1>About Us</h1>
+      <AboutUsBanner></AboutUsBanner>
     </div>
   );
 };
