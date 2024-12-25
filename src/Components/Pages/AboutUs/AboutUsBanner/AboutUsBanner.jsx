@@ -19,6 +19,18 @@ const AboutUsBanner = () => {
       <div className="container mx-auto grid grid-cols-2 gap-28 py-8">
         <div>
           <ul>
+            <li>
+              Who We Are: We are a dedicated team of real estate professionals
+              committed to helping you buy, sell, or rent properties with
+              confidence and ease.
+            </li>
+            <li>
+              Search and Filter Tools: Users can search for properties by
+              location, price range, size, type, and other customizable filters
+              to find their ideal home or investment.
+            </li>
+            <li></li>
+            <li></li>
             <li></li>
           </ul>
         </div>
