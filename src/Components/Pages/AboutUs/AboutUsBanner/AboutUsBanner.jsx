@@ -16,25 +16,40 @@ const AboutUsBanner = () => {
           </p>
         </div>
       </div>
-      <div className="container mx-auto grid grid-cols-2 gap-28 py-8">
+      <div className="container mx-auto grid grid-cols-2 gap-28 py-8 items-center">
         <div>
+          <h3 className="text-2xl mb-5 font-bold">
+            Read More And Know More About Us
+          </h3>
           <ul>
-            <li>
-              Who We Are: We are a dedicated team of real estate professionals
-              committed to helping you buy, sell, or rent properties with
-              confidence and ease.
+            <li className="text-base text-[#010001] leading-8 mb-5 font-normal">
+              <strong>Who We Are:</strong> We are a dedicated team of real
+              estate professionals committed to helping you buy, sell, or rent
+              properties with confidence and ease.
             </li>
-            <li>
-              Search and Filter Tools: Users can search for properties by
-              location, price range, size, type, and other customizable filters
-              to find their ideal home or investment.
+            <li className="text-base text-[#010001] leading-8 mb-5 font-normal">
+              <strong>Our Mission:</strong> To simplify the real estate process
+              by providing personalized guidance, expert market insights, and
+              exceptional service tailored to your needs.
             </li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li className="text-base text-[#010001] leading-8 mb-5 font-normal">
+              <strong> What We Offer:</strong> From comprehensive property
+              listings and virtual tours to expert negotiations and market
+              analysis, we’re here to make your real estate journey seamless.
+            </li>
+            <li className="text-base text-[#010001] leading-8 mb-5 font-normal">
+              <strong>Why Choose Us:</strong> With years of experience, a proven
+              track record, and a client-first approach, we go the extra mile to
+              turn your property goals into reality.
+            </li>
+            <li className="text-base text-[#010001] leading-8 mb-5 font-normal">
+              <strong>Our Promise:</strong> Your satisfaction is our priority,
+              and we strive to build long-term relationships based on trust,
+              integrity, and exceptional results.
+            </li>
           </ul>
         </div>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-8 border p-3 rounded-xl">
           <div>
             <img src={img1} className="w-full h-72 rounded-xl" alt="about-1" />
           </div>
