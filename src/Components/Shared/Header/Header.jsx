@@ -84,9 +84,12 @@ const Header = () => {
                 ))}
               </ul>
             </div>
-            <div>
-              <FaShoppingBag className="text-3xl" />
-            </div>
+            {userData && (
+              <div>
+                <FaShoppingBag className="text-3xl" />
+              </div>
+            )}
+
             {userData ? (
               <>
                 <div className="tooltip" data-tip={userData?.displayName}>

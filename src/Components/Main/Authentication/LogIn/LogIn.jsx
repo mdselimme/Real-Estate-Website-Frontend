@@ -3,6 +3,7 @@ import { AuthContext } from "../../../Shared/AuthProvider/AuthProvider";
 import { FaGithubSquare, FaGoogle, FaSignInAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router";
+import { Helmet } from "react-helmet";
 
 const LogIn = () => {
   const {
@@ -43,6 +44,9 @@ const LogIn = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Log In - Home Lengo</title>
+      </Helmet>
       <div className="container mx-auto py-10">
         <h1 className="text-center my-5 font-extrabold text-2xl">
           Log In Your Account

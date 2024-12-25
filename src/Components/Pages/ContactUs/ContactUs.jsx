@@ -1,3 +1,5 @@
+import { Helmet } from "react-helmet";
+
 const ContactUs = () => {
   const handleRegisterAccount = (e) => {
     e.preventDefault();
@@ -10,6 +12,9 @@ const ContactUs = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Contact Us - Home Lengo</title>
+      </Helmet>
       <div className="container mx-auto py-10">
         <h1 className="text-center my-10 font-extrabold text-2xl">
           Contact With Us

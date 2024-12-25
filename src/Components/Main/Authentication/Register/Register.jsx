@@ -4,6 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../../Shared/AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const {
@@ -62,6 +63,9 @@ const Register = () => {
 
   return (
     <div>
+      <Helmet>
+        <title> Register Account - Home Lengo</title>
+      </Helmet>
       <div className="container mx-auto py-10">
         <h1 className="text-center my-5 font-extrabold text-2xl">
           Register Your Account
