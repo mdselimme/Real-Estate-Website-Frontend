@@ -4,6 +4,7 @@ import { FaGithubSquare, FaGoogle, FaSignInAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const LogIn = () => {
   const {
@@ -20,15 +21,24 @@ const LogIn = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+
     logInWithEmailAndPass(email, password)
       .then((result) => {
         result.user;
+        const userD = { email };
+        axios
+          .post("http://localhost:2000/jwt", userD)
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.code, error.message);
       });
-    console.log(`email: ${email}, password: ${password}`);
     e.target.reset();
   };
 
