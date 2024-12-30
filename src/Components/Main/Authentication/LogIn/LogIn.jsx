@@ -27,13 +27,14 @@ const LogIn = () => {
         result.user;
         const userD = { email };
         axios
-          .post("http://localhost:2000/jwt", userD)
-          .then((res) => {
-            console.log(res.data);
+          .post("http://localhost:2000/email", userD, { withCredentials: true })
+          .then((response) => {
+            console.log(response.data);
           })
           .catch((error) => {
             console.log(error.message);
           });
+        console.log(userD);
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
