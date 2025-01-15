@@ -21,13 +21,13 @@ const Header = () => {
     },
     {
       id: 102,
-      menuItem: "About Us",
-      path: "/aboutus",
+      menuItem: "See All Home",
+      path: "/see_all_home",
     },
     {
       id: 103,
-      menuItem: "See All Home",
-      path: "/see_all_home",
+      menuItem: "About Us",
+      path: "/aboutus",
     },
     {
       id: 104,
