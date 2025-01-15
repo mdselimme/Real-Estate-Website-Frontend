@@ -11,19 +11,27 @@ import {
   AccordionItemHeading,
   AccordionItemPanel,
 } from "react-accessible-accordion";
+import axiosSecure from "../../Shared/axiosSecure/axiosSecure";
 
 const ViewPropertyDetails = () => {
   const [data, setPropertyData] = useState(null);
-
   const { id } = useParams();
-
-  console.log(id);
+  const axiosLinker = axiosSecure();
 
   useEffect(() => {
-    fetch(`http://localhost:2000/homes/${id}`)
+    axiosLinker
+      .get(`/homes/${id}`)
+      .then((res) => {
+        setPropertyData(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    //fetch method to find data
+    /* fetch(`http://localhost:2000/homes/${id}`)
       .then((res) => res.json())
-      .then((data) => setPropertyData(data));
-  }, [id]);
+      .then((data) => setPropertyData(data)); */
+  }, [axiosLinker, id]);
 
   return (
     <div className="container mx-auto py-10 md:px-5">
@@ -34,6 +42,9 @@ const ViewPropertyDetails = () => {
             src={data?.image}
             alt={data?.title}
           />
+          <button className="text-[#161e2d] px-14 mt-5 py-4 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]">
+            Add to Cart
+          </button>
         </div>
         <div className="bg-[#F3F7FD] p-10 rounded-2xl">
           <div className="bg-white rounded-2xl p-10">

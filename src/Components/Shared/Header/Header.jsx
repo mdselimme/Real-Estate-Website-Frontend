@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
 import HeaderLogo from "../../../assets/images/header-logo.png";
 import { IoLogIn } from "react-icons/io5";
-import { FaShoppingBag, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+import { FaShoppingCart, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
@@ -24,11 +24,11 @@ const Header = () => {
       menuItem: "About Us",
       path: "/aboutus",
     },
-    // {
-    //   id: 103,
-    //   menuItem: "Update Profile",
-    //   path: "/updateprofile",
-    // },
+    {
+      id: 103,
+      menuItem: "See All Home",
+      path: "/see_all_home",
+    },
     {
       id: 104,
       menuItem: "Contact Us",
@@ -85,19 +85,20 @@ const Header = () => {
               </ul>
             </div>
             {userData && (
-              <div>
-                <FaShoppingBag className="text-3xl" />
-              </div>
+              <Link>
+                <button className="btn">
+                  <FaShoppingCart className="text-2xl text-black" />
+                  <div className="badge badge-primary text-white">0</div>
+                </button>
+              </Link>
             )}
 
             {userData ? (
               <>
-                <div className="tooltip" data-tip={userData?.displayName}>
-                  <img
-                    src={userData?.photoURL}
-                    className="w-12 h-12 rounded-full"
-                    alt="find-image"
-                  />
+                <div className="avatar">
+                  <div className="ring-primary ring-offset-base-100 w-14 rounded-full ring ring-offset-2">
+                    <img src={userData?.photoURL} />
+                  </div>
                 </div>
 
                 <Link

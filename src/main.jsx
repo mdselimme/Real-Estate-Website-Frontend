@@ -13,6 +13,7 @@ import UpdateProfile from "./Components/Pages/UpdateProfile/UpdateProfile.jsx";
 import PrivateRoute from "./Components/Shared/PrivateRoute/PrivateRoute.jsx";
 import ViewPropertyDetails from "./Components/Pages/ViewPropertyDetails/ViewPropertyDetails.jsx";
 import NotFound from "./Components/Pages/NotFound/NotFound.jsx";
+import SeeAllHome from "./Components/Pages/SeeAllHome/SeeAllHome.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -25,6 +26,10 @@ createRoot(document.getElementById("root")).render(
             <Route path="/register" element={<Register></Register>}></Route>
             <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
             <Route path="/aboutus" element={<AboutUs></AboutUs>}></Route>
+            <Route
+              path="/see_all_home"
+              element={<SeeAllHome></SeeAllHome>}
+            ></Route>
 
             <Route
               path="/updateprofile"
