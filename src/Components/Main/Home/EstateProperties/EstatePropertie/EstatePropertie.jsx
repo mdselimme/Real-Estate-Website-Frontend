@@ -2,9 +2,35 @@ import PropTypes from "prop-types";
 import { FaBath, FaSquare } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { LuBedSingle } from "react-icons/lu";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../../../../Shared/useAuth/useAuth";
+import Swal from "sweetalert2";
 
 const EstatePropertie = ({ resident }) => {
+  const { userData } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAddToCartProduct = (home) => {
+    // console.log(home, userData.email);
+    if (userData && userData.email) {
+      //add to cart
+    } else {
+      Swal.fire({
+        title: "You are not logged In.",
+        text: "Please log in first to add to cart Product",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Go to Log in page",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+    }
+  };
+
   return (
     <div className="relative">
       <div className="card bg-base-100 w-[28rem] shadow-xl">
@@ -54,9 +80,12 @@ const EstatePropertie = ({ resident }) => {
                 >
                   View Property Details
                 </Link>
-                <Link className="text-[#161e2d] btn btn-outline px-6 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]">
+                <button
+                  onClick={() => handleAddToCartProduct(resident)}
+                  className="text-[#161e2d] btn btn-outline px-6 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]"
+                >
                   Add to Cart
-                </Link>
+                </button>
               </div>
             </div>
           </div>
