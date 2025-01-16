@@ -1,15 +1,21 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import HeaderLogo from "../../../assets/images/header-logo.png";
 import { IoLogIn } from "react-icons/io5";
 import { FaShoppingCart, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import "./Header.css";
 
 const Header = () => {
   const { userData, signOutUser, showDashboard, setShowDashboard } =
     useContext(AuthContext);
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const { pathname } = location;
+
+  if (pathname === "/dashboard") {
+    setShowDashboard(false);
+  }
 
   const logOutUser = () => {
     signOutUser(navigate);
