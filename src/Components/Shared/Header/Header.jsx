@@ -4,9 +4,11 @@ import { IoLogIn } from "react-icons/io5";
 import { FaShoppingCart, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import "./Header.css";
 
 const Header = () => {
-  const { userData, signOutUser } = useContext(AuthContext);
+  const { userData, signOutUser, showDashboard, setShowDashboard } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const logOutUser = () => {
@@ -95,18 +97,41 @@ const Header = () => {
 
             {userData ? (
               <>
-                <div className="avatar">
+                <div
+                  onClick={() => setShowDashboard(!showDashboard)}
+                  className="avatar"
+                >
                   <div className="ring-primary ring-offset-base-100 w-14 rounded-full ring ring-offset-2">
                     <img src={userData?.photoURL} />
                   </div>
                 </div>
-
-                <Link
-                  onClick={logOutUser}
-                  className="text-white hover:text-[#161e2d] hover:bg-white btn btn-outline px-8 font-bold border-2 rounded-full bg-[#1563df] border-[#1563df]"
-                >
-                  Log Out <FaSignOutAlt />
-                </Link>
+                {showDashboard && (
+                  <div
+                    id="dashboard"
+                    className={
+                      "absolute top-24 p-4 rounded-b-2xl block z-50 right-36 w-[15rem] h-auto text-center bg-white text-black"
+                    }
+                  >
+                    <ul>
+                      <li className="py-3 border-b-2 border-blue-700 px-5">
+                        <Link
+                          className="text-black font-semibold"
+                          to={"/dashboard"}
+                        >
+                          Go to Dashboard
+                        </Link>
+                      </li>
+                      <li className="py-3 px-5">
+                        <Link
+                          onClick={logOutUser}
+                          className="text-white hover:text-[#1f2020] hover:bg-white btn btn-outline px-6 font-bold border-2 rounded-full bg-[#1563df] border-[#1563df]"
+                        >
+                          Log Out <FaSignOutAlt />
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </>
             ) : (
               <>

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import EstatePropertie from "../../Main/Home/EstateProperties/EstatePropertie/EstatePropertie";
 import useAuth from "../../Shared/useAuth/useAuth";
 
@@ -6,6 +7,9 @@ const SeeAllHome = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>See All Home - Home Lengo</title>
+      </Helmet>
       <div className="container mx-auto">
         <div className="text-center py-8">
           <h1 className="text-4xl font-bold mb-5">See All Our Homes</h1>

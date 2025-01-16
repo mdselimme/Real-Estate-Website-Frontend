@@ -26,9 +26,8 @@ const LogIn = () => {
     logInWithEmailAndPass(email, password)
       .then((result) => {
         result.user;
-        const userD = { email };
         axiosLinker
-          .post("/email", userD, { withCredentials: true })
+          .post(`/email?email=${email}`, { withCredentials: true })
           .then((response) => {
             console.log(response.data);
           })

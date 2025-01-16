@@ -12,6 +12,7 @@ import {
   TwitterAuthProvider,
 } from "firebase/auth";
 import app from "../../FirebaseAuth/FirebaseAuth";
+import axiosSecure from "../axiosSecure/axiosSecure";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
@@ -20,17 +21,24 @@ const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [residentSingleData, setResidentSingleData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showDashboard, setShowDashboard] = useState(false);
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
   const twitterProvider = new TwitterAuthProvider();
+  const { axiosLinker } = axiosSecure();
   // Resident Data Fetch
   useEffect(() => {
-    fetch("http://localhost:2000/homes")
-      .then((res) => res.json())
-      .then((data) => setResidentSingleData(data));
-  }, []);
+    axiosLinker
+      .get("/homes")
+      .then((res) => {
+        setResidentSingleData(res.data);
+      })
+      .catch((error) => {
+        console.log(error.message, error.code);
+      });
+  }, [axiosLinker]);
 
   // Create an account with email and password
   const registerWithEmailAndPass = (email, password) => {
@@ -104,12 +112,14 @@ const AuthProvider = ({ children }) => {
       } else {
         setUserData(null);
         setLoading(false);
+        setShowDashboard(false);
       }
       return () => unSubscribed();
     });
   }, [auth]);
 
   const authDataAll = {
+    showDashboard,
     userData,
     residentSingleData,
     registerWithEmailAndPass,
@@ -120,6 +130,7 @@ const AuthProvider = ({ children }) => {
     logInWithTwitterOrX,
     logInWithEmailAndPass,
     loading,
+    setShowDashboard,
   };
 
   return (

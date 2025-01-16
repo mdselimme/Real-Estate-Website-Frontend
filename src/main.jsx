@@ -14,6 +14,7 @@ import PrivateRoute from "./Components/Shared/PrivateRoute/PrivateRoute.jsx";
 import ViewPropertyDetails from "./Components/Pages/ViewPropertyDetails/ViewPropertyDetails.jsx";
 import NotFound from "./Components/Pages/NotFound/NotFound.jsx";
 import SeeAllHome from "./Components/Pages/SeeAllHome/SeeAllHome.jsx";
+import Dashboard from "./Components/Pages/Dashboard/Dashboard.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="/register" element={<Register></Register>}></Route>
             <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
             <Route path="/aboutus" element={<AboutUs></AboutUs>}></Route>
+            <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
             <Route
               path="/see_all_home"
               element={<SeeAllHome></SeeAllHome>}
