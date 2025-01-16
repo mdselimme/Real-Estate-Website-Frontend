@@ -1,10 +1,11 @@
-import { useContext } from "react";
 import { FaGithubSquare, FaGoogle, FaSignInAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router";
-import { AuthContext } from "../../../Shared/AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet";
+import axiosSecure from "../../../Shared/axiosSecure/axiosSecure";
+import useAuth from "../../../Shared/useAuth/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -13,10 +14,12 @@ const Register = () => {
     logInWithGithub,
     logInWithTwitterOrX,
     logInWithGoogle,
-  } = useContext(AuthContext);
+    signOutUser,
+  } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
+  const { axiosLinker } = axiosSecure();
 
   const handleRegisterAccount = (e) => {
     e.preventDefault();
@@ -24,20 +27,45 @@ const Register = () => {
     const imagelink = e.target.imagelink.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+    // Create User Function with email and password
     registerWithEmailAndPass(email, password)
       .then((result) => {
         result.user;
+        // Update Profle Name and Imagelink
         updateProfile(auth.currentUser, {
           displayName: username,
           photoURL: imagelink,
         })
           .then(() => {
             console.log("Profile Updated");
+            console.log(result.user);
+            // send user data with last logged in time
+            const userSendData = {
+              email: result.user.email,
+              name: result.user.displayName,
+              lastLoggedInTime: result.user.metadata.lastSignInTime,
+            };
+            axiosLinker
+              .post("/users", userSendData)
+              .then((response) => {
+                console.log(response.data);
+              })
+              .catch((error) => {
+                console.log(error.message, error.code);
+              });
           })
           .catch((error) => {
             console.log(error.code, error.message);
           });
-        navigate(location?.state ? location.state : "/");
+        if (result.user) {
+          Swal.fire({
+            title: `Account Created Succesfully. Go to Login Page`,
+            icon: "success",
+            draggable: true,
+          });
+        }
+        signOutUser();
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error.code, error.message);

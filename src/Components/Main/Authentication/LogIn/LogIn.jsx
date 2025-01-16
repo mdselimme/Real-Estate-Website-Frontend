@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../Shared/AuthProvider/AuthProvider";
 import { FaGithubSquare, FaGoogle, FaSignInAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import useAuth from "../../../Shared/useAuth/useAuth";
 
 const LogIn = () => {
   const {
@@ -12,7 +11,7 @@ const LogIn = () => {
     logInWithGithub,
     logInWithTwitterOrX,
     logInWithGoogle,
-  } = useContext(AuthContext);
+  } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();

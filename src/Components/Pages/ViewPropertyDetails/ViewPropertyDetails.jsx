@@ -16,7 +16,7 @@ import axiosSecure from "../../Shared/axiosSecure/axiosSecure";
 const ViewPropertyDetails = () => {
   const [data, setPropertyData] = useState(null);
   const { id } = useParams();
-  const axiosLinker = axiosSecure();
+  const { axiosLinker } = axiosSecure();
 
   useEffect(() => {
     axiosLinker

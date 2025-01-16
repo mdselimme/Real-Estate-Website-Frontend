@@ -4,7 +4,7 @@ const axiosSecure = () => {
   const axiosLinker = axios.create({
     baseURL: "http://localhost:2000",
   });
-  return axiosLinker;
+  return { axiosLinker };
 };
 
 export default axiosSecure;
