@@ -4,13 +4,6 @@ import { useParams } from "react-router";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaBath, FaSquare } from "react-icons/fa";
 import { LuBedSingle } from "react-icons/lu";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemButton,
-  AccordionItemHeading,
-  AccordionItemPanel,
-} from "react-accessible-accordion";
 import axiosSecure from "../../Shared/axiosSecure/axiosSecure";
 
 const ViewPropertyDetails = () => {
@@ -37,14 +30,22 @@ const ViewPropertyDetails = () => {
     <div className="container mx-auto py-10 md:px-5">
       <div className="grid grid-cols-2 gap-10">
         <div>
-          <img
-            className="w-full h-[25rem] rounded-2xl"
-            src={data?.image}
-            alt={data?.title}
-          />
-          <button className="text-[#161e2d] px-14 mt-5 py-4 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]">
-            Add to Cart
-          </button>
+          <div className="bg-[#F3F7FD] p-5 rounded-2xl">
+            <img
+              className="w-full h-[25rem] rounded-2xl"
+              src={data?.image}
+              alt={data?.title}
+            />
+            <button className="text-[#161e2d] bg-white px-14 mt-5 py-4 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]">
+              Add to Cart
+            </button>
+            <div className="bg-white mt-10 p-10 rounded-2xl text-start">
+              <h2 className="text-xl font-extrabold">Description</h2>
+              <p className="text-base mt-5 leading-8 font-medium text-justify text-[rgba(78,92,125)]">
+                {data?.description}
+              </p>
+            </div>
+          </div>
         </div>
         <div className="bg-[#F3F7FD] p-10 rounded-2xl">
           <div className="bg-white rounded-2xl p-10">
@@ -128,26 +129,6 @@ const ViewPropertyDetails = () => {
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
-
-          <div
-            className="tooltip w-full tooltip-black"
-            data-tip="Click for show Details"
-          >
-            <div className="bg-white mt-10 p-10 rounded-2xl text-start">
-              <Accordion allowZeroExpanded>
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton className="text-xl font-extrabold">
-                      Description
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel className="text-base mt-5 leading-8 font-medium text-justify text-[rgba(78,92,125)]">
-                    {data?.description}
-                  </AccordionItemPanel>
-                </AccordionItem>
-              </Accordion>
             </div>
           </div>
         </div>
