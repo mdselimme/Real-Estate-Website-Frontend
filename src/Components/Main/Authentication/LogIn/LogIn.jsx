@@ -2,8 +2,9 @@ import { FaGithubSquare, FaGoogle, FaSignInAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
-import axios from "axios";
 import useAuth from "../../../Shared/useAuth/useAuth";
+import axiosSecure from "../../../Shared/axiosSecure/axiosSecure";
+import Swal from "sweetalert2";
 
 const LogIn = () => {
   const {
@@ -15,6 +16,7 @@ const LogIn = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const { axiosLinker } = axiosSecure();
 
   const handleLogInAccount = (e) => {
     e.preventDefault();
@@ -25,15 +27,33 @@ const LogIn = () => {
       .then((result) => {
         result.user;
         const userD = { email };
-        axios
-          .post("http://localhost:2000/email", userD, { withCredentials: true })
+        axiosLinker
+          .post("/email", userD, { withCredentials: true })
           .then((response) => {
             console.log(response.data);
           })
           .catch((error) => {
             console.log(error.message);
           });
-        console.log(userD);
+        const usersData = {
+          email: result.user.email,
+          lastLoggedInTime: result.user.metadata.lastSignInTime,
+        };
+        axiosLinker
+          .patch("/users", usersData)
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+        if (result.user) {
+          Swal.fire({
+            title: `Successfully Logged In your Account`,
+            icon: "success",
+            draggable: true,
+          });
+        }
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {

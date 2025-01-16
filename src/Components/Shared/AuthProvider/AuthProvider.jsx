@@ -32,16 +32,19 @@ const AuthProvider = ({ children }) => {
       .then((data) => setResidentSingleData(data));
   }, []);
 
+  // Create an account with email and password
   const registerWithEmailAndPass = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  // Logged in account with email and password
   const logInWithEmailAndPass = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  // Log in with email and password
   const logInWithGoogle = (navigate, location) => {
     setLoading(true);
     signInWithPopup(auth, googleProvider)
@@ -54,6 +57,7 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  // log in with your github account
   const logInWithGithub = (navigate, location) => {
     setLoading(true);
     signInWithPopup(auth, githubProvider)
@@ -66,6 +70,7 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  // log In with twitter or X authentication
   const logInWithTwitterOrX = (navigate, location) => {
     setLoading(true);
     signInWithPopup(auth, twitterProvider)
@@ -78,6 +83,7 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  // log Out User from website
   const signOutUser = (navigate) => {
     setLoading(true);
     signOut(auth)
@@ -89,12 +95,12 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  // Set State for set user data in state
   useEffect(() => {
     const unSubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserData(user);
         setLoading(false);
-        console.log(user);
       } else {
         setUserData(null);
         setLoading(false);
