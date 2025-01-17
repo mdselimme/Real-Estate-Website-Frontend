@@ -5,15 +5,33 @@ import { LuBedSingle } from "react-icons/lu";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../../../../Shared/useAuth/useAuth";
 import Swal from "sweetalert2";
+import axiosSecure from "../../../../Shared/axiosSecure/axiosSecure";
 
 const EstatePropertie = ({ resident }) => {
   const { userData } = useAuth();
   const navigate = useNavigate();
+  const { axiosLinker } = axiosSecure();
 
   const handleAddToCartProduct = (home) => {
     // console.log(home, userData.email);
     if (userData && userData.email) {
       //add to cart
+      const cartItem = {
+        residentId: home._id,
+        title: home?.title,
+        email: userData.email,
+        image: home?.image,
+        price: home?.price,
+      };
+      axiosLinker.post("/carts", cartItem).then((response) => {
+        if (response.data.insertedId) {
+          Swal.fire({
+            title: `Add To Product Cart Successfully`,
+            icon: "success",
+            draggable: true,
+          });
+        }
+      });
     } else {
       Swal.fire({
         title: "You are not logged In.",
@@ -25,6 +43,8 @@ const EstatePropertie = ({ resident }) => {
         confirmButtonText: "Go to Log in page",
       }).then((result) => {
         if (result.isConfirmed) {
+          // send user to login page
+          // navigate("/login", { state: { from: location } });
           navigate("/login");
         }
       });
