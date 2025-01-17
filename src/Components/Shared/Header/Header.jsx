@@ -4,11 +4,13 @@ import { IoLogIn } from "react-icons/io5";
 import { FaShoppingCart, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import useCartProduct from "../useCartProduct/useCartProduct";
 
 const Header = () => {
   const { userData, signOutUser, showDashboard, setShowDashboard } =
     useContext(AuthContext);
   const navigate = useNavigate();
+  const [cart] = useCartProduct();
 
   const location = useLocation();
   const { pathname } = location;
@@ -96,7 +98,9 @@ const Header = () => {
               <Link>
                 <button className="btn">
                   <FaShoppingCart className="text-2xl text-black" />
-                  <div className="badge badge-primary text-white">0</div>
+                  <div className="badge badge-primary text-white">
+                    {cart.length}
+                  </div>
                 </button>
               </Link>
             )}

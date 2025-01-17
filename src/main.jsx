@@ -15,44 +15,55 @@ import ViewPropertyDetails from "./Components/Pages/ViewPropertyDetails/ViewProp
 import NotFound from "./Components/Pages/NotFound/NotFound.jsx";
 import SeeAllHome from "./Components/Pages/SeeAllHome/SeeAllHome.jsx";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Root></Root>}>
-            <Route path="/" element={<Home></Home>}></Route>
-            <Route path="/login" element={<LogIn></LogIn>}></Route>
-            <Route path="/register" element={<Register></Register>}></Route>
-            <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
-            <Route path="/aboutus" element={<AboutUs></AboutUs>}></Route>
-            <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
-            <Route
-              path="/see_all_home"
-              element={<SeeAllHome></SeeAllHome>}
-            ></Route>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Root></Root>}>
+              <Route path="/" element={<Home></Home>}></Route>
+              <Route path="/login" element={<LogIn></LogIn>}></Route>
+              <Route path="/register" element={<Register></Register>}></Route>
+              <Route
+                path="/contactus"
+                element={<ContactUs></ContactUs>}
+              ></Route>
+              <Route path="/aboutus" element={<AboutUs></AboutUs>}></Route>
+              <Route
+                path="/dashboard"
+                element={<Dashboard></Dashboard>}
+              ></Route>
+              <Route
+                path="/see_all_home"
+                element={<SeeAllHome></SeeAllHome>}
+              ></Route>
 
-            <Route
-              path="/updateprofile"
-              element={
-                <PrivateRoute>
-                  <UpdateProfile></UpdateProfile>
-                </PrivateRoute>
-              }
-            ></Route>
-            <Route
-              path="/viewproperty/:id"
-              element={
-                <PrivateRoute>
-                  <ViewPropertyDetails></ViewPropertyDetails>
-                </PrivateRoute>
-              }
-            ></Route>
-          </Route>
-          <Route path="*" element={<NotFound></NotFound>}></Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+              <Route
+                path="/updateprofile"
+                element={
+                  <PrivateRoute>
+                    <UpdateProfile></UpdateProfile>
+                  </PrivateRoute>
+                }
+              ></Route>
+              <Route
+                path="/viewproperty/:id"
+                element={
+                  <PrivateRoute>
+                    <ViewPropertyDetails></ViewPropertyDetails>
+                  </PrivateRoute>
+                }
+              ></Route>
+            </Route>
+            <Route path="*" element={<NotFound></NotFound>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </QueryClientProvider>
   </StrictMode>
 );
