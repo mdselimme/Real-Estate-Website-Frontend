@@ -6,11 +6,13 @@ import { Link, useNavigate } from "react-router";
 import useAuth from "../../../../Shared/useAuth/useAuth";
 import Swal from "sweetalert2";
 import axiosSecure from "../../../../Shared/axiosSecure/axiosSecure";
+import useCartProduct from "../../../../Shared/useCartProduct/useCartProduct";
 
 const EstatePropertie = ({ resident }) => {
   const { userData } = useAuth();
   const navigate = useNavigate();
   const { axiosLinker } = axiosSecure();
+  const { refetch } = useCartProduct();
 
   const handleAddToCartProduct = (home) => {
     // console.log(home, userData.email);
@@ -30,6 +32,8 @@ const EstatePropertie = ({ resident }) => {
             icon: "success",
             draggable: true,
           });
+          // refetch data for update the cart number
+          refetch();
         }
       });
     } else {

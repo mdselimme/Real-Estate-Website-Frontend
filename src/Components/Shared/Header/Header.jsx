@@ -10,7 +10,7 @@ const Header = () => {
   const { userData, signOutUser, showDashboard, setShowDashboard } =
     useContext(AuthContext);
   const navigate = useNavigate();
-  const [cart] = useCartProduct();
+  const { cart } = useCartProduct();
 
   const location = useLocation();
   const { pathname } = location;
@@ -95,7 +95,8 @@ const Header = () => {
               </ul>
             </div>
             {userData && (
-              <Link>
+              //cart product number show
+              <Link to={"/show_cart_product"}>
                 <button className="btn">
                   <FaShoppingCart className="text-2xl text-black" />
                   <div className="badge badge-primary text-white">
