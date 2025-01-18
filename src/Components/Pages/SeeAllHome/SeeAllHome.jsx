@@ -1,9 +1,10 @@
 import { Helmet } from "react-helmet";
 import EstatePropertie from "../../Main/Home/EstateProperties/EstatePropertie/EstatePropertie";
-import useAuth from "../../Shared/useAuth/useAuth";
+
+import useAllHomes from "../../Shared/useAllHomes/useAllHomes";
 
 const SeeAllHome = () => {
-  const { residentSingleData } = useAuth();
+  const { residents } = useAllHomes();
 
   return (
     <div>
@@ -20,7 +21,7 @@ const SeeAllHome = () => {
           </p>
         </div>
         <div className="grid grid-cols-3 justify-between items-start gap-16 mt-8 mb-14">
-          {residentSingleData.map((residentData) => (
+          {residents.map((residentData) => (
             <EstatePropertie
               key={residentData._id}
               resident={residentData}

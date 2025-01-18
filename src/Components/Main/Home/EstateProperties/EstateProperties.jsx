@@ -1,8 +1,9 @@
 import EstatePropertie from "./EstatePropertie/EstatePropertie";
-import useAuth from "../../../Shared/useAuth/useAuth";
+
+import useAllHomes from "../../../Shared/useAllHomes/useAllHomes";
 
 const EstateProperties = () => {
-  const { residentSingleData } = useAuth();
+  const { residents } = useAllHomes();
 
   return (
     <div>
@@ -16,7 +17,7 @@ const EstateProperties = () => {
           </p>
         </div>
         <div className="grid grid-cols-3 justify-between items-start gap-16 mt-8 mb-14">
-          {residentSingleData.slice(0, 6).map((residentData) => (
+          {residents.slice(0, 6).map((residentData) => (
             <EstatePropertie
               key={residentData._id}
               resident={residentData}

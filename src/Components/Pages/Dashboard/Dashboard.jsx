@@ -4,8 +4,8 @@ const Dashboard = () => {
   return (
     <div className="container mx-auto">
       <div className="flex justify-start">
-        <div className="h-screen">
-          <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+        <div className="h-screen w-1/5">
+          <ul className="menu bg-base-200 text-base-content min-h-full p-4">
             {/* Sidebar content here */}
             <li className="mb-4">
               <NavLink to={"/dashboard/home"}>Dashboard Home</NavLink>
@@ -27,7 +27,7 @@ const Dashboard = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="w-4/5">
           <Outlet></Outlet>
         </div>
       </div>

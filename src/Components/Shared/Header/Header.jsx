@@ -18,6 +18,9 @@ const Header = () => {
   if (pathname === "/dashboard") {
     setShowDashboard(false);
   }
+  // if (pathname === "/dashboard/show_cart_product") {
+  //   setShowDashboard(false);
+  // }
 
   const logOutUser = () => {
     signOutUser(navigate);
