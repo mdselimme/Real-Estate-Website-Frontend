@@ -96,7 +96,7 @@ const Header = () => {
             </div>
             {userData && (
               //cart product number show
-              <Link to={"/show_cart_product"}>
+              <Link to={"/dashboard/show_cart_product"}>
                 <button className="btn">
                   <FaShoppingCart className="text-2xl text-black" />
                   <div className="badge badge-primary text-white">

@@ -17,6 +17,7 @@ import SeeAllHome from "./Components/Pages/SeeAllHome/SeeAllHome.jsx";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ShowCartProduct from "./Components/Pages/ShowCartProduct/ShowCartProduct.jsx";
+import DashBoardHome from "./Components/Pages/Dashboard/DashBoardHome/DashBoardHome.jsx";
 
 const queryClient = new QueryClient();
 
@@ -35,17 +36,24 @@ createRoot(document.getElementById("root")).render(
                 element={<ContactUs></ContactUs>}
               ></Route>
               <Route path="/aboutus" element={<AboutUs></AboutUs>}></Route>
-              <Route
-                path="/dashboard"
-                element={<Dashboard></Dashboard>}
-              ></Route>
+              <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+                <Route
+                  path="/dashboard"
+                  element={<DashBoardHome></DashBoardHome>}
+                ></Route>
+                <Route
+                  path="/dashboard/home"
+                  element={<DashBoardHome></DashBoardHome>}
+                ></Route>
+                <Route
+                  path="/dashboard/show_cart_product"
+                  element={<ShowCartProduct></ShowCartProduct>}
+                ></Route>
+              </Route>
+
               <Route
                 path="/see_all_home"
                 element={<SeeAllHome></SeeAllHome>}
-              ></Route>
-              <Route
-                path="//show_cart_product"
-                element={<ShowCartProduct></ShowCartProduct>}
               ></Route>
 
               <Route
