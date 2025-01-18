@@ -20,6 +20,7 @@ const useAddToCartFunc = () => {
         email: userData.email,
         image: home?.image,
         price: home?.price,
+        status: home?.status,
       };
       axiosLinker.post("/carts", cartItem).then((response) => {
         if (response.data.insertedId) {
