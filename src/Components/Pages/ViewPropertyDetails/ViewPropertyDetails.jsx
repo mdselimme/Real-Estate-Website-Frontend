@@ -5,11 +5,13 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaBath, FaSquare } from "react-icons/fa";
 import { LuBedSingle } from "react-icons/lu";
 import axiosSecure from "../../Shared/axiosSecure/axiosSecure";
+import addToCartFunc from "../../Shared/addToCartFunc/useAddToCartFunc";
 
 const ViewPropertyDetails = () => {
   const [data, setPropertyData] = useState(null);
   const { id } = useParams();
   const { axiosLinker } = axiosSecure();
+  const { addToCartProduct } = addToCartFunc();
 
   useEffect(() => {
     axiosLinker
@@ -26,6 +28,11 @@ const ViewPropertyDetails = () => {
       .then((data) => setPropertyData(data)); */
   }, [axiosLinker, id]);
 
+  // add to cart product
+  const handleAddToCartProduct = (home) => {
+    addToCartProduct(home);
+  };
+
   return (
     <div className="container mx-auto py-10 md:px-5">
       <div className="grid grid-cols-2 gap-10">
@@ -36,7 +43,12 @@ const ViewPropertyDetails = () => {
               src={data?.image}
               alt={data?.title}
             />
-            <button className="text-[#161e2d] bg-white px-14 mt-5 py-4 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]">
+            <button
+              onClick={() => {
+                handleAddToCartProduct(data);
+              }}
+              className="text-[#161e2d] bg-white px-14 mt-5 py-4 font-bold border-2 rounded-full hover:text-white hover:bg-[#1563df] hover:border-[#1563df] border-[#1563df]"
+            >
               Add to Cart
             </button>
             <div className="bg-white mt-10 p-10 rounded-2xl text-start">

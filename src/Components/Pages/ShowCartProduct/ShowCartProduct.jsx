@@ -5,8 +5,8 @@ const ShowCartProduct = () => {
 
   return (
     <div>
-      <div className="bg-emerald-400 p-5 rounded-xl">
-        <h1 className="text-2xl font-extrabold text-white">
+      <div className="bg-emerald-200 p-5 text-center">
+        <h1 className="text-2xl font-extrabold text-black">
           Total Cart Product : {cart.length}
         </h1>
       </div>

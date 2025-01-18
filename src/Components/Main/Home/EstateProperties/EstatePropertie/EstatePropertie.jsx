@@ -2,57 +2,61 @@ import PropTypes from "prop-types";
 import { FaBath, FaSquare } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { LuBedSingle } from "react-icons/lu";
-import { Link, useNavigate } from "react-router";
-import useAuth from "../../../../Shared/useAuth/useAuth";
-import Swal from "sweetalert2";
-import axiosSecure from "../../../../Shared/axiosSecure/axiosSecure";
-import useCartProduct from "../../../../Shared/useCartProduct/useCartProduct";
+import { Link } from "react-router";
+// import useAuth from "../../../../Shared/useAuth/useAuth";
+// import Swal from "sweetalert2";
+// import axiosSecure from "../../../../Shared/axiosSecure/axiosSecure";
+// import useCartProduct from "../../../../Shared/useCartProduct/useCartProduct";
+import addToCartFunc from "../../../../Shared/addToCartFunc/useAddToCartFunc";
 
 const EstatePropertie = ({ resident }) => {
-  const { userData } = useAuth();
-  const navigate = useNavigate();
-  const { axiosLinker } = axiosSecure();
-  const { refetch } = useCartProduct();
+  // const { userData } = useAuth();
+  // const navigate = useNavigate();
+  // const { axiosLinker } = axiosSecure();
+  // const { refetch } = useCartProduct();
+
+  const { addToCartProduct } = addToCartFunc();
 
   const handleAddToCartProduct = (home) => {
+    addToCartProduct(home);
     // console.log(home, userData.email);
-    if (userData && userData.email) {
-      //add to cart
-      const cartItem = {
-        residentId: home._id,
-        title: home?.title,
-        email: userData.email,
-        image: home?.image,
-        price: home?.price,
-      };
-      axiosLinker.post("/carts", cartItem).then((response) => {
-        if (response.data.insertedId) {
-          Swal.fire({
-            title: `Add To Product Cart Successfully`,
-            icon: "success",
-            draggable: true,
-          });
-          // refetch data for update the cart number
-          refetch();
-        }
-      });
-    } else {
-      Swal.fire({
-        title: "You are not logged In.",
-        text: "Please log in first to add to cart Product",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Go to Log in page",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // send user to login page
-          // navigate("/login", { state: { from: location } });
-          navigate("/login");
-        }
-      });
-    }
+    // if (userData && userData.email) {
+    //   //add to cart
+    //   const cartItem = {
+    //     residentId: home._id,
+    //     title: home?.title,
+    //     email: userData.email,
+    //     image: home?.image,
+    //     price: home?.price,
+    //   };
+    //   axiosLinker.post("/carts", cartItem).then((response) => {
+    //     if (response.data.insertedId) {
+    //       Swal.fire({
+    //         title: `Add To Product Cart Successfully`,
+    //         icon: "success",
+    //         draggable: true,
+    //       });
+    //       // refetch data for update the cart number
+    //       refetch();
+    //     }
+    //   });
+    // } else {
+    //   Swal.fire({
+    //     title: "You are not logged In.",
+    //     text: "Please log in first to add to cart Product",
+    //     icon: "warning",
+    //     showCancelButton: true,
+    //     confirmButtonColor: "#3085d6",
+    //     cancelButtonColor: "#d33",
+    //     confirmButtonText: "Go to Log in page",
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       // send user to login page
+    //       // navigate("/login", { state: { from: location } });
+    //       navigate("/login");
+    //     }
+    //   });
+    // }
   };
 
   return (
