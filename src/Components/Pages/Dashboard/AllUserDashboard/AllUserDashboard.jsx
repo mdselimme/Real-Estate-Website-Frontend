@@ -6,6 +6,8 @@ const AllUserDashboard = () => {
   const { users } = useAllUsers();
   const { axiosLinker } = useAxiosSecure();
 
+  const withOutAdmins = users.filter((user) => user.admin !== true);
+
   const deleteCartProduct = (id, email, name) => {
     console.log(id, email, name);
   };
@@ -68,7 +70,7 @@ const AllUserDashboard = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                {users.map((users, index) => (
+                {withOutAdmins.map((users, index) => (
                   <tr key={index + 3} className="text-center">
                     <th>{index + 1}</th>
                     <td>
