@@ -43,6 +43,7 @@ const Register = () => {
             const userSendData = {
               email: result.user.email,
               name: result.user.displayName,
+              image: result.user.photoURL,
               lastLoggedInTime: result.user.metadata.lastSignInTime,
             };
             axiosLinker

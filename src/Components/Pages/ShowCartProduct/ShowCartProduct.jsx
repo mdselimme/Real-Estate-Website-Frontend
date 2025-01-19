@@ -76,7 +76,11 @@ const ShowCartProduct = () => {
                 <tr key={index + 3} className="text-center">
                   <th>{index + 1}</th>
                   <td>
-                    <img className="w-24 mx-auto" src={product?.image} alt="" />
+                    <img
+                      className="w-24 mx-auto rounded-md"
+                      src={product?.image}
+                      alt=""
+                    />
                   </td>
                   <td>{product?.title}</td>
                   <td>{product?.status ? product?.status : "No status"}</td>
