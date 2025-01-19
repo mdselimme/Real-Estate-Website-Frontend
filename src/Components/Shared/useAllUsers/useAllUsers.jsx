@@ -1,5 +1,5 @@
 import useAuth from "../useAuth/useAuth";
-import axiosSecure from "../axiosSecure/axiosSecure";
+import axiosSecure from "../useAxiosSecure/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
 const useAllUsers = () => {
@@ -8,7 +8,13 @@ const useAllUsers = () => {
   const { refetch, data: users = [] } = useQuery({
     queryKey: ["users", userData?.email],
     queryFn: async () => {
-      const res = await axiosLinker.get(`/users?email=${userData.email}`);
+      const res = await axiosLinker.get(
+        `/users?email=${userData.email}` /* {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("access-token")}`,
+        },
+      } */
+      );
       return res.data;
     },
   });

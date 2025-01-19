@@ -3,7 +3,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
 import useAuth from "../../../Shared/useAuth/useAuth";
-import axiosSecure from "../../../Shared/axiosSecure/axiosSecure";
+import axiosSecure from "../../../Shared/useAxiosSecure/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const LogIn = () => {
@@ -26,14 +26,6 @@ const LogIn = () => {
     logInWithEmailAndPass(email, password)
       .then((result) => {
         result.user;
-        axiosLinker
-          .post(`/email?email=${email}`, { withCredentials: true })
-          .then((response) => {
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
         const usersData = {
           email: result.user.email,
           lastLoggedInTime: result.user.metadata.lastSignInTime,

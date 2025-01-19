@@ -38,7 +38,14 @@ createRoot(document.getElementById("root")).render(
                 element={<ContactUs></ContactUs>}
               ></Route>
               <Route path="/aboutus" element={<AboutUs></AboutUs>}></Route>
-              <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+              <Route
+                path="/dashboard"
+                element={
+                  <PrivateRoute>
+                    <Dashboard></Dashboard>
+                  </PrivateRoute>
+                }
+              >
                 <Route
                   path="/dashboard"
                   element={<DashBoardHome></DashBoardHome>}

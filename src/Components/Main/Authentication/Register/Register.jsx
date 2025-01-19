@@ -3,7 +3,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router";
 import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet";
-import axiosSecure from "../../../Shared/axiosSecure/axiosSecure";
+import axiosSecure from "../../../Shared/useAxiosSecure/useAxiosSecure";
 import useAuth from "../../../Shared/useAuth/useAuth";
 import Swal from "sweetalert2";
 

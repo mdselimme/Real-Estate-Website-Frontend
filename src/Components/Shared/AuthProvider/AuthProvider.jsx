@@ -12,6 +12,7 @@ import {
   TwitterAuthProvider,
 } from "firebase/auth";
 import app from "../../FirebaseAuth/FirebaseAuth";
+import useAxiosPublic from "../useAxiosPublic/useAxiosPublic";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
@@ -21,6 +22,7 @@ const AuthProvider = ({ children }) => {
 
   const [loading, setLoading] = useState(true);
   const [showDashboard, setShowDashboard] = useState(false);
+  const { axiosPublicLinker } = useAxiosPublic();
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
@@ -96,15 +98,27 @@ const AuthProvider = ({ children }) => {
     const unSubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserData(user);
+        axiosPublicLinker
+          .post(`/jwttoken?email=${user?.email}`, { withCredentials: true })
+          .then((response) => {
+            if (response.data.token) {
+              localStorage.setItem("access-token", response.data.token);
+            }
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+
         setLoading(false);
       } else {
+        localStorage.removeItem("access-token");
         setUserData(null);
         setLoading(false);
         setShowDashboard(false);
       }
       return () => unSubscribed();
     });
-  }, [auth]);
+  }, [auth, axiosPublicLinker]);
 
   const authDataAll = {
     showDashboard,

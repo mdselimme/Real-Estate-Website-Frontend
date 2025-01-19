@@ -76,7 +76,7 @@ const AllUserDashboard = () => {
                         onClick={() =>
                           deleteCartProduct(users?._id, users?.name)
                         }
-                        className="bg-secondary px-3 py-2 font-semibold text-white rounded-full"
+                        className="bg-accent px-3 py-2 font-semibold text-white rounded-full"
                       >
                         Make Admin
                       </button>

@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import axiosSecure from "../../Shared/axiosSecure/axiosSecure";
+import axiosSecure from "../../Shared/useAxiosSecure/useAxiosSecure";
 import useCartProduct from "../../Shared/useCartProduct/useCartProduct";
 
 const ShowCartProduct = () => {

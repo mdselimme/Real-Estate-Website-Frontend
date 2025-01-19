@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import useAuth from "../useAuth/useAuth";
 import { useNavigate } from "react-router";
-import axiosSecure from "../axiosSecure/axiosSecure";
+import axiosSecure from "../useAxiosSecure/useAxiosSecure";
 import useCartProduct from "../useCartProduct/useCartProduct";
 
 const useAddToCartFunc = () => {

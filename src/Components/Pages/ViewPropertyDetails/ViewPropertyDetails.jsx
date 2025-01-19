@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaBath, FaSquare } from "react-icons/fa";
 import { LuBedSingle } from "react-icons/lu";
-import axiosSecure from "../../Shared/axiosSecure/axiosSecure";
+import axiosSecure from "../../Shared/useAxiosSecure/useAxiosSecure";
 import addToCartFunc from "../../Shared/addToCartFunc/useAddToCartFunc";
 
 const ViewPropertyDetails = () => {
