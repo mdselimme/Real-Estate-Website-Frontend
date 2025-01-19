@@ -23,7 +23,9 @@ const Dashboard = () => {
               <NavLink to={"/dashboard/show_all_reviews"}>Reviews</NavLink>
             </li>
             <li className="mb-4">
-              <NavLink to={"/dashboard/manage_users"}>Manage Users</NavLink>
+              <NavLink to={"/dashboard/manage_admin_users"}>
+                Manage Admin Users
+              </NavLink>
             </li>
           </ul>
         </div>

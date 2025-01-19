@@ -1,10 +1,37 @@
+import Swal from "sweetalert2";
 import useAllUsers from "../../../Shared/useAllUsers/useAllUsers";
+import useAxiosSecure from "../../../Shared/useAxiosSecure/useAxiosSecure";
 
 const AllUserDashboard = () => {
   const { users } = useAllUsers();
+  const { axiosLinker } = useAxiosSecure();
 
   const deleteCartProduct = (id, email, name) => {
     console.log(id, email, name);
+  };
+
+  const makeAdminUsers = (id, email) => {
+    console.log(id, email);
+    axiosLinker.patch(`/make/admin?email=${email}`).then((res) => {
+      if (res.data.matchedCount)
+        Swal.fire({
+          title: "Admin Created Successfully.",
+          icon: "success",
+          draggable: true,
+        });
+    });
+  };
+
+  const deleteAdminUsers = (id, email) => {
+    console.log(id, email);
+    /* axiosLinker.patch(`/make/admin?email=${email}`).then((res) => {
+      if (res.data.matchedCount)
+        Swal.fire({
+          title: "Admin Created Successfully.",
+          icon: "success",
+          draggable: true,
+        });
+    }); */
   };
 
   return (
@@ -72,14 +99,25 @@ const AllUserDashboard = () => {
                       >
                         Delete
                       </button>
-                      <button
-                        onClick={() =>
-                          deleteCartProduct(users?._id, users?.name)
-                        }
-                        className="bg-accent px-3 py-2 font-semibold text-white rounded-full"
-                      >
-                        Make Admin
-                      </button>
+                      {users?.admin ? (
+                        <button
+                          onClick={() =>
+                            deleteAdminUsers(users?._id, users?.email)
+                          }
+                          className="bg-accent px-3 py-2 font-semibold text-white rounded-full"
+                        >
+                          Delete Admin
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() =>
+                            makeAdminUsers(users?._id, users?.email)
+                          }
+                          className="bg-accent px-3 py-2 font-semibold text-white rounded-full"
+                        >
+                          Make Admin
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))}

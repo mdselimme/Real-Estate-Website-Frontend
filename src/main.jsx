@@ -19,6 +19,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ShowCartProduct from "./Components/Pages/ShowCartProduct/ShowCartProduct.jsx";
 import DashBoardHome from "./Components/Pages/Dashboard/DashBoardHome/DashBoardHome.jsx";
 import AllUserDashboard from "./Components/Pages/Dashboard/AllUserDashboard/AllUserDashboard.jsx";
+import ManageAdminUsers from "./Components/Pages/Dashboard/ManageAdminUsers/ManageAdminUsers.jsx";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,10 @@ createRoot(document.getElementById("root")).render(
                 <Route
                   path="/dashboard/show_all_users"
                   element={<AllUserDashboard></AllUserDashboard>}
+                ></Route>
+                <Route
+                  path="/dashboard/manage_admin_users"
+                  element={<ManageAdminUsers></ManageAdminUsers>}
                 ></Route>
               </Route>
 
