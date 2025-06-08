@@ -1,8 +1,9 @@
-import EstatePropertie from "./EstatePropertie/EstatePropertie";
 
+import EstatePropertie from "./EstatePropertie/EstatePropertie";
 import useAllHomes from "../../../Shared/useAllHomes/useAllHomes";
 
 const EstateProperties = () => {
+
   const { residents } = useAllHomes();
 
   return (

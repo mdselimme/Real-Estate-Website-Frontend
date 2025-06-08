@@ -1,12 +1,17 @@
 import Swal from "sweetalert2";
 import useAllUsers from "../../../Shared/useAllUsers/useAllUsers";
 import useAxiosSecure from "../../../Shared/useAxiosSecure/useAxiosSecure";
+import useAdmin from "../../../Shared/useAdmin/useAdmin";
 
 const AllUserDashboard = () => {
-  const { users } = useAllUsers();
+  const { users, refetch } = useAllUsers();
   const { axiosLinker } = useAxiosSecure();
 
-  const withOutAdmins = users.filter((user) => user.admin !== true);
+  const withOutAdmins = users.filter((user) => user.admin !== "true");
+
+  const { admin } = useAdmin();
+
+  console.log(admin);
 
   const deleteCartProduct = (id, email, name) => {
     console.log(id, email, name);
@@ -14,13 +19,13 @@ const AllUserDashboard = () => {
 
   const makeAdminUsers = (id, email) => {
     console.log(id, email);
-    axiosLinker.patch(`/make/admin?email=${email}`).then((res) => {
-      if (res.data.matchedCount)
-        Swal.fire({
-          title: "Admin Created Successfully.",
-          icon: "success",
-          draggable: true,
-        });
+    axiosLinker.patch(`/make/admin?email=${email}&status=true`).then((res) => {
+      if (res.data.matchedCount) refetch();
+      Swal.fire({
+        title: "Admin Created Successfully.",
+        icon: "success",
+        draggable: true,
+      });
     });
   };
 
@@ -101,7 +106,7 @@ const AllUserDashboard = () => {
                       >
                         Delete
                       </button>
-                      {users?.admin ? (
+                      {users?.admin === "true" ? (
                         <button
                           onClick={() =>
                             deleteAdminUsers(users?._id, users?.email)

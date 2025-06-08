@@ -8,14 +8,15 @@ const useAllHomes = () => {
 
   // Resident Data Fetch
   useEffect(() => {
-    axiosPublicLinker
-      .get("/homes")
-      .then((res) => {
+    const callData = async () => {
+      try {
+        const res = await axiosPublicLinker.get("/homes");
         setResidentSingleData(res.data);
-      })
-      .catch((error) => {
-        console.log(error.message, error.code);
-      });
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    callData();
   }, [axiosPublicLinker]);
   return { residents };
 };

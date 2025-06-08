@@ -1,9 +1,23 @@
+import Swal from "sweetalert2";
 import useAllUsers from "../../../Shared/useAllUsers/useAllUsers";
+import useAxiosSecure from "../../../Shared/useAxiosSecure/useAxiosSecure";
 
 const ManageAdminUsers = () => {
-  const { users } = useAllUsers();
+  const { users, refetch } = useAllUsers();
+  const { axiosLinker } = useAxiosSecure();
 
-  const admins = users.filter((admin) => admin.admin === true);
+  const admins = users.filter((admin) => admin.admin === "true");
+
+  const removeAsAdmin = (email) => {
+    axiosLinker.patch(`/make/admin?email=${email}&status=false`).then((res) => {
+      if (res.data.matchedCount) refetch();
+      Swal.fire({
+        title: "Admin Deleted Successfully.",
+        icon: "success",
+        draggable: true,
+      });
+    });
+  };
 
   return (
     <div>
@@ -60,37 +74,16 @@ const ManageAdminUsers = () => {
                     </td>
 
                     <td>
-                      <button
-                        // onClick={() =>
-                        //   deleteCartProduct(
-                        //     users?._id,
-                        //     users?.email,
-                        //     users?.name
-                        //   )
-                        // }
-                        className="bg-primary px-3 py-2 mr-2 font-semibold text-white rounded-full"
-                      >
-                        Delete
-                      </button>
-                      {/* {users?.admin ? (
-                        <button
-                          onClick={() =>
-                            deleteAdminUsers(users?._id, users?.email)
-                          }
-                          className="bg-accent px-3 py-2 font-semibold text-white rounded-full"
-                        >
-                          Delete Admin
-                        </button>
+                      {users?.masterAdmin ? (
+                        ""
                       ) : (
                         <button
-                          onClick={() =>
-                            makeAdminUsers(users?._id, users?.email)
-                          }
+                          onClick={() => removeAsAdmin(users?.email)}
                           className="bg-accent px-3 py-2 font-semibold text-white rounded-full"
                         >
-                          Make Admin
+                          Remove As Admin
                         </button>
-                      )} */}
+                      )}
                     </td>
                   </tr>
                 ))}
